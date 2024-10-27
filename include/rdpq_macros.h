@@ -1,7 +1,7 @@
 /**
  * @file rdpq_macros.h
  * @brief RDP command macros
- * @ingroup rdp
+ * @ingroup rdpq
  * 
  * This file contains macros that can be used to assembly some complex RDP commands:
  * the blender and the color combiner configurations.
