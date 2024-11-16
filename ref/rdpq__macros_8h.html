@@ -111,6 +111,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a58d9cd9a1b0d5c0c5b5d740ca4b970c8" id="r_a58d9cd9a1b0d5c0c5b5d740ca4b970c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdpq__macros_8h.html#a58d9cd9a1b0d5c0c5b5d740ca4b970c8">RDPQ_BLENDER2</a>(bl0,  bl1)</td></tr>
 <tr class="memdesc:a58d9cd9a1b0d5c0c5b5d740ca4b970c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a 2-pass blender formula.  <br /></td></tr>
 <tr class="separator:a58d9cd9a1b0d5c0c5b5d740ca4b970c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71e6de72756b9cb4ef4a44508b7a40ac" id="r_a71e6de72756b9cb4ef4a44508b7a40ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdpq__macros_8h.html#a71e6de72756b9cb4ef4a44508b7a40ac">ZBUF_MAX</a>&#160;&#160;&#160;0xFFFC</td></tr>
+<tr class="memdesc:a71e6de72756b9cb4ef4a44508b7a40ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum Z value, which is the default reset value for the Z-Buffer.  <br /></td></tr>
+<tr class="separator:a71e6de72756b9cb4ef4a44508b7a40ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d676d9a94dba202a102e31ad15f8bbf" id="r_a4d676d9a94dba202a102e31ad15f8bbf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdpq__macros_8h.html#a4d676d9a94dba202a102e31ad15f8bbf">ZBUF_VAL</a>(f)&#160;&#160;&#160;(__rdpq_zfp14(f) &lt;&lt; 2)</td></tr>
+<tr class="memdesc:a4d676d9a94dba202a102e31ad15f8bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a packed Z-buffer value for a given Z value.  <br /></td></tr>
+<tr class="separator:a4d676d9a94dba202a102e31ad15f8bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Standard color combiners</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>These macros offer some standard color combiner configuration that can be used to implement common render modes. </p>
 </div></td></tr>
@@ -555,7 +561,9 @@ typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rdpq_blen
 </ul>
 <p>This is the list of all possible slots. Not all slots are available for the four variables (see the table below).</p>
 <ul>
-<li><code>TEX0</code>: texel of the texture being drawn.</li>
+<li><code>TEX0</code>: texel of the first texture being drawn.</li>
+<li><code>TEX1</code>: texel of the second texture being drawn.</li>
+<li><code>TEX0_BUG</code>: due to a hardware bug, when using TEX0 in the second pass, RDP will actually sample the next texel in the scanline. We call this slot <code>TEX0_BUG</code> to make it clear that there is a potential issue.</li>
 <li><code>SHADE</code>: per-pixel interpolated color. This can be set on each vertex of a triangle, and is interpolated across each pixel. It cannot be used while drawing rectangles.</li>
 <li><code>PRIM</code>: value of the PRIM register (set via <a class="el" href="rdpq_8c.html#ad25a8b6c5eb35fb2253f601c3be24867" title="Set the RDP PRIM combiner register (color only) (RDP command: SET_PRIM_COLOR)">rdpq_set_prim_color</a>)</li>
 <li><code>ENV</code>: value of the ENV register (set via <a class="el" href="rdpq_8c.html#a289f1c0c4e92d66d71c55bd6c8103e3e" title="Set the RDP ENV combiner register (RDP command: SET_ENV_COLOR)">rdpq_set_env_color</a>)</li>
@@ -599,9 +607,7 @@ typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rdpq_blen
 </pre><p> which means that for all channels, we multiply the value sampled from the texture with the per-pixel interpolated color coming from the triangle vertex. To do so, we need to adapt the formula to the 4-variable combiner structure: </p><pre class="fragment">   RGB   = (TEX0 - 0) * SHADE + 0
    ALPHA = (TEX0 - 0) * SHADE + 0
 </pre><p> To program this into the combiner, we can issue the following command: </p><pre class="fragment">   rdpq_mode_combiner(RDPQ1_COMBINER((TEX0, 0, SHADE, 0), (TEX0, 0, SHADE, 0)));
-</pre><p> Notice that this is just a way to obtain the formula above. Another possibility is: </p><pre class="fragment">   rdpq_mode_combiner(RDPQ1_COMBINER((1, 0, SHADE, TEX0), (1, 0, SHADE, TEX0)));
-</pre><p> which will obtain exactly the same result.</p>
-<p>A complete example drawing a textured rectangle with a fixed semi-transparency of 0.7:</p>
+</pre><p> A complete example drawing a textured rectangle with a fixed semi-transparency of 0.7:</p>
 <div class="fragment"><div class="line"><span class="comment">// Set standard mode</span></div>
 <div class="line"><a class="code hl_function" href="rdpq__mode_8c.html#ac3c29578703de424bea9548ad86bb4af">rdpq_set_mode_standard</a>();    </div>
 <div class="line"> </div>
@@ -624,13 +630,13 @@ typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rdpq_blen
 <div class="line">    0, 0, 100, 80,</div>
 <div class="line">    0, 0, 1.f, 1.0f);</div>
 <div class="ttc" id="agroup__graphics_html_gae16bab5741f411ec4ef51b0295f6e705"><div class="ttname"><a href="group__graphics.html#gae16bab5741f411ec4ef51b0295f6e705">RGBA32</a></div><div class="ttdeci">#define RGBA32(rx, gx, bx, ax)</div><div class="ttdoc">Create a color_t from the R,G,B,A components in the RGBA32 range (0-255).</div><div class="ttdef"><b>Definition</b> graphics.h:74</div></div>
-<div class="ttc" id="ardpq_8c_html_a289f1c0c4e92d66d71c55bd6c8103e3e"><div class="ttname"><a href="rdpq_8c.html#a289f1c0c4e92d66d71c55bd6c8103e3e">rdpq_set_env_color</a></div><div class="ttdeci">void rdpq_set_env_color(color_t color)</div><div class="ttdoc">Set the RDP ENV combiner register (RDP command: SET_ENV_COLOR)</div><div class="ttdef"><b>Definition</b> rdpq.h:1065</div></div>
+<div class="ttc" id="ardpq_8c_html_a289f1c0c4e92d66d71c55bd6c8103e3e"><div class="ttname"><a href="rdpq_8c.html#a289f1c0c4e92d66d71c55bd6c8103e3e">rdpq_set_env_color</a></div><div class="ttdeci">void rdpq_set_env_color(color_t color)</div><div class="ttdoc">Set the RDP ENV combiner register (RDP command: SET_ENV_COLOR)</div><div class="ttdef"><b>Definition</b> rdpq.h:1067</div></div>
 <div class="ttc" id="ardpq_8h_html_a8d34f311d2e71435652a57adb1d6931ea65f7d9bde93f125384f419cc6e9b27a7"><div class="ttname"><a href="rdpq_8h.html#a8d34f311d2e71435652a57adb1d6931ea65f7d9bde93f125384f419cc6e9b27a7">TILE0</a></div><div class="ttdeci">@ TILE0</div><div class="ttdoc">Tile #0 (for code readability)</div><div class="ttdef"><b>Definition</b> rdpq.h:250</div></div>
-<div class="ttc" id="ardpq__macros_8h_html_ae0c65c3d742a4caf62bcd0d830793584"><div class="ttname"><a href="rdpq__macros_8h.html#ae0c65c3d742a4caf62bcd0d830793584">RDPQ_BLENDER</a></div><div class="ttdeci">#define RDPQ_BLENDER(bl)</div><div class="ttdoc">Build a 1-pass blender formula.</div><div class="ttdef"><b>Definition</b> rdpq_macros.h:826</div></div>
-<div class="ttc" id="ardpq__macros_8h_html_ae6316102ee9f09199c7d0c9c452915dc"><div class="ttname"><a href="rdpq__macros_8h.html#ae6316102ee9f09199c7d0c9c452915dc">RDPQ_COMBINER1</a></div><div class="ttdeci">#define RDPQ_COMBINER1(rgb, alpha)</div><div class="ttdoc">Build a 1-pass combiner formula.</div><div class="ttdef"><b>Definition</b> rdpq_macros.h:429</div></div>
-<div class="ttc" id="ardpq__mode_8c_html_a64a153623e5985ce5c434bf52ba6efa6"><div class="ttname"><a href="rdpq__mode_8c.html#a64a153623e5985ce5c434bf52ba6efa6">rdpq_mode_blender</a></div><div class="ttdeci">void rdpq_mode_blender(rdpq_blender_t blend)</div><div class="ttdoc">Configure the formula to use for blending.</div><div class="ttdef"><b>Definition</b> rdpq_mode.h:591</div></div>
+<div class="ttc" id="ardpq__macros_8h_html_ae0c65c3d742a4caf62bcd0d830793584"><div class="ttname"><a href="rdpq__macros_8h.html#ae0c65c3d742a4caf62bcd0d830793584">RDPQ_BLENDER</a></div><div class="ttdeci">#define RDPQ_BLENDER(bl)</div><div class="ttdoc">Build a 1-pass blender formula.</div><div class="ttdef"><b>Definition</b> rdpq_macros.h:828</div></div>
+<div class="ttc" id="ardpq__macros_8h_html_ae6316102ee9f09199c7d0c9c452915dc"><div class="ttname"><a href="rdpq__macros_8h.html#ae6316102ee9f09199c7d0c9c452915dc">RDPQ_COMBINER1</a></div><div class="ttdeci">#define RDPQ_COMBINER1(rgb, alpha)</div><div class="ttdoc">Build a 1-pass combiner formula.</div><div class="ttdef"><b>Definition</b> rdpq_macros.h:431</div></div>
+<div class="ttc" id="ardpq__mode_8c_html_a64a153623e5985ce5c434bf52ba6efa6"><div class="ttname"><a href="rdpq__mode_8c.html#a64a153623e5985ce5c434bf52ba6efa6">rdpq_mode_blender</a></div><div class="ttdeci">void rdpq_mode_blender(rdpq_blender_t blend)</div><div class="ttdoc">Configure the formula to use for blending.</div><div class="ttdef"><b>Definition</b> rdpq_mode.h:599</div></div>
 <div class="ttc" id="ardpq__mode_8c_html_a7aaec7357eb3343339d9373b1a963a57"><div class="ttname"><a href="rdpq__mode_8c.html#a7aaec7357eb3343339d9373b1a963a57">rdpq_mode_combiner</a></div><div class="ttdeci">void rdpq_mode_combiner(rdpq_combiner_t comb)</div><div class="ttdoc">Configure the color combiner.</div><div class="ttdef"><b>Definition</b> rdpq_mode.h:465</div></div>
-<div class="ttc" id="ardpq__mode_8c_html_ac3c29578703de424bea9548ad86bb4af"><div class="ttname"><a href="rdpq__mode_8c.html#ac3c29578703de424bea9548ad86bb4af">rdpq_set_mode_standard</a></div><div class="ttdeci">void rdpq_set_mode_standard(void)</div><div class="ttdoc">Reset render mode to standard.</div><div class="ttdef"><b>Definition</b> rdpq_mode.c:92</div></div>
+<div class="ttc" id="ardpq__mode_8c_html_ac3c29578703de424bea9548ad86bb4af"><div class="ttname"><a href="rdpq__mode_8c.html#ac3c29578703de424bea9548ad86bb4af">rdpq_set_mode_standard</a></div><div class="ttdeci">void rdpq_set_mode_standard(void)</div><div class="ttdoc">Reset render mode to standard.</div><div class="ttdef"><b>Definition</b> rdpq_mode.c:93</div></div>
 <div class="ttc" id="ardpq__rect_8h_html_a7196362c567172a2012f414c8a412743"><div class="ttname"><a href="rdpq__rect_8h.html#a7196362c567172a2012f414c8a412743">rdpq_texture_rectangle</a></div><div class="ttdeci">#define rdpq_texture_rectangle(tile, x0, y0, x1, y1, s, t)</div><div class="ttdoc">Draw a textured rectangle (RDP command: TEXTURE_RECTANGLE)</div><div class="ttdef"><b>Definition</b> rdpq_rect.h:308</div></div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -846,10 +852,49 @@ typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rdpq_blen
 
 </div>
 </div>
+<a id="a71e6de72756b9cb4ef4a44508b7a40ac" name="a71e6de72756b9cb4ef4a44508b7a40ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71e6de72756b9cb4ef4a44508b7a40ac">&#9670;&#160;</a></span>ZBUF_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ZBUF_MAX&#160;&#160;&#160;0xFFFC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The maximum Z value, which is the default reset value for the Z-Buffer. </p>
+<p>This is equivalent to <a class="el" href="rdpq__macros_8h.html#a4d676d9a94dba202a102e31ad15f8bbf" title="Create a packed Z-buffer value for a given Z value.">ZBUF_VAL</a>(1.0f) </p>
+
+</div>
+</div>
+<a id="a4d676d9a94dba202a102e31ad15f8bbf" name="a4d676d9a94dba202a102e31ad15f8bbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d676d9a94dba202a102e31ad15f8bbf">&#9670;&#160;</a></span>ZBUF_VAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ZBUF_VAL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">f</td><td>)</td>
+          <td>&#160;&#160;&#160;(__rdpq_zfp14(f) &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a packed Z-buffer value for a given Z value. </p>
+<p>This macro can be used to convert a floating point Z value in range [0..1] to a packed Z value that can be written as-is in the Z-buffer, for instance via <a class="el" href="rdpq__attach_8c.html#a047f715076b21ea45112d91360812809" title="Reset the current Z buffer to a given value.">rdpq_clear_z</a>.</p>
+<p>Notice that this macro sets Delta-Z to 0 in the packed Z value, since it is not possible to fully configure Delta-Z via <a class="el" href="rdpq__attach_8c.html#a047f715076b21ea45112d91360812809" title="Reset the current Z buffer to a given value.">rdpq_clear_z</a> anyway. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 27 2024 15:39:41 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Nov 16 2024 09:06:22 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

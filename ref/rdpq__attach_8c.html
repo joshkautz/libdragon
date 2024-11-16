@@ -182,7 +182,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>__rdpq_clear_z</b> (c
 <p>Attach the RDP to a color surface (and optionally a Z buffer) </p>
 <p>This function configures the new render targets the RDP will draw to. It accepts both a color buffer and optionally a Z buffer, both of which in terms of <a class="el" href="surface_8h.html#structsurface__t" title="A surface buffer for graphics.">surface_t</a> pointers.</p>
 <p>For instance, it can be used with framebuffers acquired by calling <a class="el" href="group__display.html#gaf8ad0501f0408430e3b40f0f626a33bd" title="Get a display buffer for rendering.">display_get</a>, or to render to an offscreen buffer created with <a class="el" href="surface_8c.html#a5a48f2ccc890381490463097d6f51c93" title="Allocate a new surface in memory.">surface_alloc</a> or <a class="el" href="surface_8c.html#a47bd38809ff7938c1d0123d540a2851a" title="Initialize a surface_t structure with the provided buffer.">surface_make</a>.</p>
-<p>This function should be called before any rendering operations to ensure that the RDP has a valid render target to operate on.</p>
+<p>This function should be called before any rendering operations to ensure that the RDP has a valid render target to operate on. It also resets the scissor rectangle to match the buffer being passed, so that the whole buffer will be writable after attaching to it.</p>
 <p>The previous render targets are stored away in a small stack, so that they can be restored later when <a class="el" href="rdpq__attach_8h.html#ac8c2f2ec501e83d6fcd4c37675c512f7" title="Detach the RDP from the current surface, and restore the previous one.">rdpq_detach</a> is called. This allows to temporarily switch rendering to an offscreen surface, and then restore the main render target.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -367,6 +367,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>__rdpq_clear_z</b> (c
 </div><div class="memdoc">
 
 <p>Reset the current Z buffer to a given value. </p>
+<p>This function clears the Z-buffer with the specified packed 16-bit value. This value is composed as follows:</p>
+<ul>
+<li>The top 16-bit contains the Z value in a custom floating point format.</li>
+<li>The bottom 2-bits (plus the 2 hidden bits) contain the Delta-Z value. The Delta-Z value to use while clearing does not matter in practice for normal Z buffer usages, so it can be left as 0.</li>
+</ul>
+<p>The default value to use for clearing the Z-buffer is <a class="el" href="rdpq__macros_8h.html#a71e6de72756b9cb4ef4a44508b7a40ac" title="The maximum Z value, which is the default reset value for the Z-Buffer.">ZBUF_MAX</a>. To set the clear value to a custom Z value, use the <a class="el" href="rdpq__macros_8h.html#a4d676d9a94dba202a102e31ad15f8bbf" title="Create a packed Z-buffer value for a given Z value.">ZBUF_VAL</a> macro.</p>
 <p>Note that this function will respect the current scissor rectangle, if configured.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -446,7 +452,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>__rdpq_clear_z</b> (c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 27 2024 15:39:41 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Nov 16 2024 09:06:22 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
