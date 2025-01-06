@@ -124,9 +124,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gad868ada6b4e5c6eafb40a70f7377b900" id="r_gad868ada6b4e5c6eafb40a70f7377b900"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dma.html#gad868ada6b4e5c6eafb40a70f7377b900">dma_read_raw_async</a> (void *ram_address, unsigned long pi_address, unsigned long len)</td></tr>
 <tr class="memdesc:gad868ada6b4e5c6eafb40a70f7377b900"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start reading data from a peripheral through PI DMA (low-level)  <br /></td></tr>
 <tr class="separator:gad868ada6b4e5c6eafb40a70f7377b900"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga67b2fbe3459597747359794ce2e3ddcc" id="r_ga67b2fbe3459597747359794ce2e3ddcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dma.html#ga67b2fbe3459597747359794ce2e3ddcc">dma_read_async</a> (void *ram_address, unsigned long pi_address, unsigned long len)</td></tr>
-<tr class="memdesc:ga67b2fbe3459597747359794ce2e3ddcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start reading data from a peripheral through PI DMA.  <br /></td></tr>
-<tr class="separator:ga67b2fbe3459597747359794ce2e3ddcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b9f3294a160dbfd5e6ed65155fca1b7" id="r_ga0b9f3294a160dbfd5e6ed65155fca1b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dma.html#ga0b9f3294a160dbfd5e6ed65155fca1b7">dma_read_async</a> (void *ram_pointer, unsigned long pi_address, unsigned long len)</td></tr>
+<tr class="memdesc:ga0b9f3294a160dbfd5e6ed65155fca1b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start reading data from a peripheral through PI DMA.  <br /></td></tr>
+<tr class="separator:ga0b9f3294a160dbfd5e6ed65155fca1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga58b544e310a21cd57fe01da65cd27693" id="r_ga58b544e310a21cd57fe01da65cd27693"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dma.html#ga58b544e310a21cd57fe01da65cd27693">dma_read</a> (void *ram_address, unsigned long pi_address, unsigned long len)</td></tr>
 <tr class="memdesc:ga58b544e310a21cd57fe01da65cd27693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from a peripheral through PI DMA, waiting for completion.  <br /></td></tr>
 <tr class="separator:ga58b544e310a21cd57fe01da65cd27693"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -279,7 +279,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dma_wait</b> (void)</
 <p>Start reading data from a peripheral through PI DMA (low-level) </p>
 <p>This function should be used when reading from a cartridge peripheral (typically ROM). This function just begins executing a raw DMA transfer, which is well-defined only for RAM addresses which are multiple of 8, ROM addresses which are multiple of 2, and lengths which are multiple of 2.</p>
 <p>Use <a class="el" href="group__dma.html#ga89a297ad5b901919cc3c44f08d16dfb0" title="Wait until an async DMA or I/O transfer is finished.">dma_wait</a> to wait for the end of the transfer.</p>
-<p>See <a class="el" href="group__dma.html#ga67b2fbe3459597747359794ce2e3ddcc" title="Start reading data from a peripheral through PI DMA.">dma_read_async</a> for a higher level primitive which can perform almost arbitrary transfers.</p>
+<p>See <a class="el" href="group__dma.html#ga0b9f3294a160dbfd5e6ed65155fca1b7" title="Start reading data from a peripheral through PI DMA.">dma_read_async</a> for a higher level primitive which can perform almost arbitrary transfers.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">ram_address</td><td>Pointer to a buffer to place read data (must be 8-byte aligned) </td></tr>
@@ -291,8 +291,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dma_wait</b> (void)</
 
 </div>
 </div>
-<a id="ga67b2fbe3459597747359794ce2e3ddcc" name="ga67b2fbe3459597747359794ce2e3ddcc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga67b2fbe3459597747359794ce2e3ddcc">&#9670;&#160;</a></span>dma_read_async()</h2>
+<a id="ga0b9f3294a160dbfd5e6ed65155fca1b7" name="ga0b9f3294a160dbfd5e6ed65155fca1b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0b9f3294a160dbfd5e6ed65155fca1b7">&#9670;&#160;</a></span>dma_read_async()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -301,7 +301,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dma_wait</b> (void)</
           <td class="memname">void dma_read_async </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ram_address</em>, </td>
+          <td class="paramname"><em>ram_pointer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -330,7 +330,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dma_wait</b> (void)</
 <p>For non performance sensitive tasks such as reading and parsing data from ROM at loading time, a better option is to use DragonFS, where <a class="el" href="dragonfs_8c.html#a7c0acaa1af10520da638633ab73b9287" title="Read data from a file.">dfs_read</a> falls back to a CPU memory copy to realign the data when required.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">ram_address</td><td>Pointer to a buffer in RDRAM to place read data </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">ram_pointer</td><td>Pointer to a buffer in RDRAM to place read data </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pi_address</td><td>Memory address of the peripheral to read from </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Length in bytes to read into ram_pointer </td></tr>
   </table>
@@ -372,7 +372,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dma_wait</b> (void)</
 </div><div class="memdoc">
 
 <p>Read data from a peripheral through PI DMA, waiting for completion. </p>
-<p>This function performs a blocking read. See <a class="el" href="group__dma.html#ga67b2fbe3459597747359794ce2e3ddcc" title="Start reading data from a peripheral through PI DMA.">dma_read_async</a> for more information.</p>
+<p>This function performs a blocking read. See <a class="el" href="group__dma.html#ga0b9f3294a160dbfd5e6ed65155fca1b7" title="Start reading data from a peripheral through PI DMA.">dma_read_async</a> for more information.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">ram_address</td><td>Pointer to a buffer in RDRAM to place read data </td></tr>
@@ -381,7 +381,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dma_wait</b> (void)</
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This function has always had an historical mistake: the pi_address is mangled to be forced into the ROM area (0x10000000-0x1FFFFFFF). This is wrong as the PI bus has full 32-bit address, and the same function could have been used to access the whole range. If you need to read outside the ROM area, use <a class="el" href="group__dma.html#ga67b2fbe3459597747359794ce2e3ddcc" title="Start reading data from a peripheral through PI DMA.">dma_read_async</a> instead. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function has always had an historical mistake: the pi_address is mangled to be forced into the ROM area (0x10000000-0x1FFFFFFF). This is wrong as the PI bus has full 32-bit address, and the same function could have been used to access the whole range. If you need to read outside the ROM area, use <a class="el" href="group__dma.html#ga0b9f3294a160dbfd5e6ed65155fca1b7" title="Start reading data from a peripheral through PI DMA.">dma_read_async</a> instead. </dd></dl>
 
 </div>
 </div>
@@ -515,7 +515,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dma_wait</b> (void)</
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jan 6 2025 21:45:18 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Jan 6 2025 22:32:51 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

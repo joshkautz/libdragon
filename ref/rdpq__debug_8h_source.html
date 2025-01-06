@@ -112,25 +112,27 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="keywordtype">int</span> <a class="code hl_function" href="rdpq__debug_8h.html#a3a8bc37e59c31488db705e0adf791c35">rdpq_debug_disasm_size</a>(uint64_t *buf);</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>}</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="keywordtype">char</span>* <a class="code hl_function" href="rdpq__debug_8h.html#ae4b9070a34659f955171c3888e36d86a">rdpq_debug_disasm_cc</a>(uint64_t cc64);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>}</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="ardpq__debug_8h_html_a1b6e04df491c2d55cba5b622e9404b02"><div class="ttname"><a href="rdpq__debug_8h.html#a1b6e04df491c2d55cba5b622e9404b02">rdpq_debug_install_hook</a></div><div class="ttdeci">void rdpq_debug_install_hook(void(*hook)(void *ctx, uint64_t *cmd, int cmd_size), void *ctx)</div><div class="ttdoc">Install a custom hook that will be called every time a RDP command is processed.</div></div>
-<div class="ttc" id="ardpq__debug_8h_html_a3a8bc37e59c31488db705e0adf791c35"><div class="ttname"><a href="rdpq__debug_8h.html#a3a8bc37e59c31488db705e0adf791c35">rdpq_debug_disasm_size</a></div><div class="ttdeci">int rdpq_debug_disasm_size(uint64_t *buf)</div><div class="ttdoc">Return the size of the next RDP commands.</div><div class="ttdef"><b>Definition</b> rdpq_debug.c:455</div></div>
+<div class="ttc" id="ardpq__debug_8h_html_a3a8bc37e59c31488db705e0adf791c35"><div class="ttname"><a href="rdpq__debug_8h.html#a3a8bc37e59c31488db705e0adf791c35">rdpq_debug_disasm_size</a></div><div class="ttdeci">int rdpq_debug_disasm_size(uint64_t *buf)</div><div class="ttdoc">Return the size of the next RDP commands.</div><div class="ttdef"><b>Definition</b> rdpq_debug.c:457</div></div>
 <div class="ttc" id="ardpq__debug_8h_html_a55c7e558e4673c0d498a6dc2be1c0792"><div class="ttname"><a href="rdpq__debug_8h.html#a55c7e558e4673c0d498a6dc2be1c0792">rdpq_debug_start</a></div><div class="ttdeci">void rdpq_debug_start(void)</div><div class="ttdoc">Initialize the RDPQ debugging engine.</div></div>
 <div class="ttc" id="ardpq__debug_8h_html_a5bf776a5e0630cc294376951f67cc8f9"><div class="ttname"><a href="rdpq__debug_8h.html#a5bf776a5e0630cc294376951f67cc8f9">rdpq_debug_stop</a></div><div class="ttdeci">void rdpq_debug_stop(void)</div><div class="ttdoc">Stop the rdpq debugging engine.</div></div>
 <div class="ttc" id="ardpq__debug_8h_html_a803828ee30e0abcd321e5dbc362e7d0d"><div class="ttname"><a href="rdpq__debug_8h.html#a803828ee30e0abcd321e5dbc362e7d0d">rdpq_debug_log</a></div><div class="ttdeci">void rdpq_debug_log(bool show_log)</div><div class="ttdoc">Show a full log of all the RDP commands.</div></div>
 <div class="ttc" id="ardpq__debug_8h_html_a847e4cd157797e887fb1d5d2cf611b10"><div class="ttname"><a href="rdpq__debug_8h.html#a847e4cd157797e887fb1d5d2cf611b10">rdpq_debug_get_tmem</a></div><div class="ttdeci">surface_t rdpq_debug_get_tmem(void)</div><div class="ttdoc">Acquire a dump of the current contents of TMEM.</div></div>
-<div class="ttc" id="ardpq__debug_8h_html_af0a2e1e0864533b9e2068e9af66ecd3b"><div class="ttname"><a href="rdpq__debug_8h.html#af0a2e1e0864533b9e2068e9af66ecd3b">rdpq_debug_disasm</a></div><div class="ttdeci">bool rdpq_debug_disasm(uint64_t *buf, FILE *out)</div><div class="ttdoc">Disassemble a RDP command.</div><div class="ttdef"><b>Definition</b> rdpq_debug.c:763</div></div>
+<div class="ttc" id="ardpq__debug_8h_html_ae4b9070a34659f955171c3888e36d86a"><div class="ttname"><a href="rdpq__debug_8h.html#ae4b9070a34659f955171c3888e36d86a">rdpq_debug_disasm_cc</a></div><div class="ttdeci">char * rdpq_debug_disasm_cc(uint64_t cc64)</div><div class="ttdoc">Disassemble a RDP combiner command.</div><div class="ttdef"><b>Definition</b> rdpq_debug.c:473</div></div>
+<div class="ttc" id="ardpq__debug_8h_html_af0a2e1e0864533b9e2068e9af66ecd3b"><div class="ttname"><a href="rdpq__debug_8h.html#af0a2e1e0864533b9e2068e9af66ecd3b">rdpq_debug_disasm</a></div><div class="ttdeci">bool rdpq_debug_disasm(uint64_t *buf, FILE *out)</div><div class="ttdoc">Disassemble a RDP command.</div><div class="ttdef"><b>Definition</b> rdpq_debug.c:808</div></div>
 <div class="ttc" id="ardpq__debug_8h_html_af3a06bc5bb62b56379694e97ebe7ac4e"><div class="ttname"><a href="rdpq__debug_8h.html#af3a06bc5bb62b56379694e97ebe7ac4e">rdpq_debug_log_msg</a></div><div class="ttdeci">void rdpq_debug_log_msg(const char *str)</div><div class="ttdoc">Add a custom message in the RDP logging.</div></div>
 <div class="ttc" id="asurface_8h_html_structsurface__t"><div class="ttname"><a href="surface_8h.html#structsurface__t">surface_t</a></div><div class="ttdoc">A surface buffer for graphics.</div><div class="ttdef"><b>Definition</b> surface.h:138</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jan 6 2025 21:45:17 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Jan 6 2025 22:32:51 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

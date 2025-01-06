@@ -112,6 +112,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rdpq_debug_stop</b> (
 <tr class="memitem:a3a8bc37e59c31488db705e0adf791c35" id="r_a3a8bc37e59c31488db705e0adf791c35"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdpq__debug_8h.html#a3a8bc37e59c31488db705e0adf791c35">rdpq_debug_disasm_size</a> (uint64_t *buf)</td></tr>
 <tr class="memdesc:a3a8bc37e59c31488db705e0adf791c35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the size of the next RDP commands.  <br /></td></tr>
 <tr class="separator:a3a8bc37e59c31488db705e0adf791c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4b9070a34659f955171c3888e36d86a" id="r_ae4b9070a34659f955171c3888e36d86a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdpq__debug_8h.html#ae4b9070a34659f955171c3888e36d86a">rdpq_debug_disasm_cc</a> (uint64_t cc64)</td></tr>
+<tr class="memdesc:ae4b9070a34659f955171c3888e36d86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassemble a RDP combiner command.  <br /></td></tr>
+<tr class="separator:ae4b9070a34659f955171c3888e36d86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>RDP Command queue: debugging helpers. </p>
@@ -202,7 +205,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rdpq_debug_stop</b> (
 <div class="ttc" id="ardpq_8c_html_a70a6556d7d088ca2b745fa145e3aeee3"><div class="ttname"><a href="rdpq_8c.html#a70a6556d7d088ca2b745fa145e3aeee3">rdpq_set_fill_color</a></div><div class="ttdeci">void rdpq_set_fill_color(color_t color)</div><div class="ttdoc">Enqueue a SET_FILL_COLOR RDP command.</div><div class="ttdef"><b>Definition</b> rdpq.h:837</div></div>
 <div class="ttc" id="ardpq__debug_8h_html_a803828ee30e0abcd321e5dbc362e7d0d"><div class="ttname"><a href="rdpq__debug_8h.html#a803828ee30e0abcd321e5dbc362e7d0d">rdpq_debug_log</a></div><div class="ttdeci">void rdpq_debug_log(bool show_log)</div><div class="ttdoc">Show a full log of all the RDP commands.</div></div>
 <div class="ttc" id="ardpq__debug_8h_html_af3a06bc5bb62b56379694e97ebe7ac4e"><div class="ttname"><a href="rdpq__debug_8h.html#af3a06bc5bb62b56379694e97ebe7ac4e">rdpq_debug_log_msg</a></div><div class="ttdeci">void rdpq_debug_log_msg(const char *str)</div><div class="ttdoc">Add a custom message in the RDP logging.</div></div>
-<div class="ttc" id="ardpq__mode_8c_html_a99c5c398b388f6d1683e7405a6058fb9"><div class="ttname"><a href="rdpq__mode_8c.html#a99c5c398b388f6d1683e7405a6058fb9">rdpq_set_mode_fill</a></div><div class="ttdeci">void rdpq_set_mode_fill(color_t color)</div><div class="ttdoc">Reset render mode to FILL type.</div><div class="ttdef"><b>Definition</b> rdpq_mode.h:299</div></div>
+<div class="ttc" id="ardpq__mode_8c_html_a99c5c398b388f6d1683e7405a6058fb9"><div class="ttname"><a href="rdpq__mode_8c.html#a99c5c398b388f6d1683e7405a6058fb9">rdpq_set_mode_fill</a></div><div class="ttdeci">void rdpq_set_mode_fill(color_t color)</div><div class="ttdoc">Reset render mode to FILL type.</div><div class="ttdef"><b>Definition</b> rdpq_mode.h:301</div></div>
 <div class="ttc" id="ardpq__rect_8h_html_a9c6405f89d2fe70046330964c21ba124"><div class="ttname"><a href="rdpq__rect_8h.html#a9c6405f89d2fe70046330964c21ba124">rdpq_fill_rectangle</a></div><div class="ttdeci">#define rdpq_fill_rectangle(x0, y0, x1, y1)</div><div class="ttdoc">Draw a filled rectangle (RDP command: FILL_RECTANGLE)</div><div class="ttdef"><b>Definition</b> rdpq_rect.h:249</div></div>
 </div><!-- fragment --><p>produces this output: </p><pre class="fragment"> [0xa00e7128] f1020000000332a8    RDPQ_MESSAGE     Black rectangle
  [0xa00e7130] ef30000000000000    SET_OTHER_MODES  fill
@@ -369,10 +372,38 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rdpq_debug_stop</b> (
 
 </div>
 </div>
+<a id="ae4b9070a34659f955171c3888e36d86a" name="ae4b9070a34659f955171c3888e36d86a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4b9070a34659f955171c3888e36d86a">&#9670;&#160;</a></span>rdpq_debug_disasm_cc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * rdpq_debug_disasm_cc </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>cc64</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disassemble a RDP combiner command. </p>
+<p>This function disassembles a combiner command, which is a 64-bit word that configures the color combiner of the RDP. The command is disassembled in the same format of the RDPQ_COMBINER1 / RDPQ_COMBINER2 macros, and returned as a heap-allocated string (to be freed when not needed anymore).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cc64</td><td>64-bit combiner command </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Disassembled string (must be freed with free()) </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jan 6 2025 21:45:17 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Jan 6 2025 22:32:51 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

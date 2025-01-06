@@ -271,6 +271,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3a8bc37e59c31488db705e0adf791c35" id="r_a3a8bc37e59c31488db705e0adf791c35"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdpq__debug_8c.html#a3a8bc37e59c31488db705e0adf791c35">rdpq_debug_disasm_size</a> (uint64_t *buf)</td></tr>
 <tr class="memdesc:a3a8bc37e59c31488db705e0adf791c35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the size of the next RDP commands.  <br /></td></tr>
 <tr class="separator:a3a8bc37e59c31488db705e0adf791c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4b9070a34659f955171c3888e36d86a" id="r_ae4b9070a34659f955171c3888e36d86a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdpq__debug_8c.html#ae4b9070a34659f955171c3888e36d86a">rdpq_debug_disasm_cc</a> (uint64_t cc64)</td></tr>
+<tr class="memdesc:ae4b9070a34659f955171c3888e36d86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassemble a RDP combiner command.  <br /></td></tr>
+<tr class="separator:ae4b9070a34659f955171c3888e36d86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0a2e1e0864533b9e2068e9af66ecd3b" id="r_af0a2e1e0864533b9e2068e9af66ecd3b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdpq__debug_8c.html#af0a2e1e0864533b9e2068e9af66ecd3b">rdpq_debug_disasm</a> (uint64_t *buf, FILE *out)</td></tr>
 <tr class="memdesc:af0a2e1e0864533b9e2068e9af66ecd3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassemble a RDP command.  <br /></td></tr>
 <tr class="separator:af0a2e1e0864533b9e2068e9af66ecd3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -774,6 +777,34 @@ Scissor extents. </td></tr>
 
 </div>
 </div>
+<a id="ae4b9070a34659f955171c3888e36d86a" name="ae4b9070a34659f955171c3888e36d86a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4b9070a34659f955171c3888e36d86a">&#9670;&#160;</a></span>rdpq_debug_disasm_cc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * rdpq_debug_disasm_cc </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>cc64</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disassemble a RDP combiner command. </p>
+<p>This function disassembles a combiner command, which is a 64-bit word that configures the color combiner of the RDP. The command is disassembled in the same format of the RDPQ_COMBINER1 / RDPQ_COMBINER2 macros, and returned as a heap-allocated string (to be freed when not needed anymore).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cc64</td><td>64-bit combiner command </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Disassembled string (must be freed with free()) </dd></dl>
+
+</div>
+</div>
 <a id="af0a2e1e0864533b9e2068e9af66ecd3b" name="af0a2e1e0864533b9e2068e9af66ecd3b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0a2e1e0864533b9e2068e9af66ecd3b">&#9670;&#160;</a></span>rdpq_debug_disasm()</h2>
 
@@ -870,7 +901,7 @@ Scissor extents. </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jan 6 2025 21:45:18 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Jan 6 2025 22:32:51 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

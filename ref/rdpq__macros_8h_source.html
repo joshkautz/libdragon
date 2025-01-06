@@ -159,7 +159,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#define _RDPQ_COMB2B_RGB_SUBB_COMBINED  cast64(0)</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#define _RDPQ_COMB2B_RGB_SUBB_TEX1      cast64(1)</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#define _RDPQ_COMB2B_RGB_SUBA_TEX0_BUG  cast64(2) </span><span class="comment">// TEX0 is buggy in 2nd cycle: it refers to *next* pixel in the scanline</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#define _RDPQ_COMB2B_RGB_SUBB_TEX0_BUG  cast64(2) </span><span class="comment">// TEX0 is buggy in 2nd cycle: it refers to *next* pixel in the scanline</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#define _RDPQ_COMB2B_RGB_SUBB_PRIM      cast64(3)</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#define _RDPQ_COMB2B_RGB_SUBB_SHADE     cast64(4)</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#define _RDPQ_COMB2B_RGB_SUBB_ENV       cast64(5)</span></div>
@@ -539,23 +539,25 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span> </div>
 <div class="line"><a id="l00862" name="l00862"></a><span class="lineno"><a class="line" href="rdpq__macros_8h.html#a58d9cd9a1b0d5c0c5b5d740ca4b970c8">  862</a></span><span class="preprocessor">#define RDPQ_BLENDER2(bl0, bl1) castbl(__rdpq_blend_2cyc_0 bl0 | __rdpq_blend_2cyc_1 bl1 | SOMX_BLEND_2PASS)</span></div>
 <div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span> </div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno"><a class="line" href="rdpq__macros_8h.html#a71e6de72756b9cb4ef4a44508b7a40ac">  869</a></span><span class="preprocessor">#define ZBUF_MAX        0xFFFC </span></div>
-<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span> </div>
-<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span><span class="preprocessor">#ifndef __ASSEMBLER__</span></div>
-<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span> </div>
-<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span><span class="keyword">extern</span> uint16_t __rdpq_zfp14(<span class="keywordtype">float</span> f);</div>
+<div class="line"><a id="l00866" name="l00866"></a><span class="lineno"><a class="line" href="rdpq__macros_8h.html#a85778605327870eedf586ad7f851e0cd">  866</a></span><span class="preprocessor">#define RDPQ_FOG_STANDARD         RDPQ_BLENDER((IN_RGB, SHADE_ALPHA, FOG_RGB, INV_MUX_ALPHA))</span></div>
+<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span> </div>
+<div class="line"><a id="l00873" name="l00873"></a><span class="lineno"><a class="line" href="rdpq__macros_8h.html#a71e6de72756b9cb4ef4a44508b7a40ac">  873</a></span><span class="preprocessor">#define ZBUF_MAX        0xFFFC </span></div>
+<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span> </div>
+<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span><span class="preprocessor">#ifndef __ASSEMBLER__</span></div>
 <div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span> </div>
-<div class="line"><a id="l00887" name="l00887"></a><span class="lineno"><a class="line" href="rdpq__macros_8h.html#a4d676d9a94dba202a102e31ad15f8bbf">  887</a></span><span class="preprocessor">#define ZBUF_VAL(f)     (__rdpq_zfp14(f) &lt;&lt; 2)</span></div>
-<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span> </div>
-<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span> </div>
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span><span class="keyword">extern</span> uint16_t __rdpq_zfp14(<span class="keywordtype">float</span> f);</div>
+<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span> </div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno"><a class="line" href="rdpq__macros_8h.html#a4d676d9a94dba202a102e31ad15f8bbf">  891</a></span><span class="preprocessor">#define ZBUF_VAL(f)     (__rdpq_zfp14(f) &lt;&lt; 2)</span></div>
+<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span> </div>
+<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span> </div>
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="ardpq__macros_8h_html_a57a7ebf93023895db81d937866b00223"><div class="ttname"><a href="rdpq__macros_8h.html#a57a7ebf93023895db81d937866b00223">rdpq_combiner_t</a></div><div class="ttdeci">uint64_t rdpq_combiner_t</div><div class="ttdoc">A combiner formula, created by RDPQ_COMBINER1 or RDPQ_COMBINER2.</div><div class="ttdef"><b>Definition</b> rdpq_macros.h:18</div></div>
 <div class="ttc" id="ardpq__macros_8h_html_ad903433712249392fb3ba0b3f8803cd7"><div class="ttname"><a href="rdpq__macros_8h.html#ad903433712249392fb3ba0b3f8803cd7">rdpq_blender_t</a></div><div class="ttdeci">uint32_t rdpq_blender_t</div><div class="ttdoc">A blender formula, created by RDPQ_BLENDER or RDPQ_BLENDER2.</div><div class="ttdef"><b>Definition</b> rdpq_macros.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jan 6 2025 21:45:17 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Jan 6 2025 22:32:51 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
