@@ -167,6 +167,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3747bea884034d32d4d558872223969e" id="r_ga3747bea884034d32d4d558872223969e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__backtrace.html#ga3747bea884034d32d4d558872223969e">backtrace</a> (void **buffer, int size)</td></tr>
 <tr class="memdesc:ga3747bea884034d32d4d558872223969e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Walk the stack and return the current call stack.  <br /></td></tr>
 <tr class="separator:ga3747bea884034d32d4d558872223969e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b88fa9e4a83a768240718684a8c2de5" id="r_a9b88fa9e4a83a768240718684a8c2de5"><td class="memItemLeft" align="right" valign="top"><a id="a9b88fa9e4a83a768240718684a8c2de5" name="a9b88fa9e4a83a768240718684a8c2de5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>__backtrace_from</b> (void **buffer, int size, uint32_t *pc, uint32_t *sp, uint32_t *fp, uint32_t *exception_ra)</td></tr>
+<tr class="memdesc:a9b88fa9e4a83a768240718684a8c2de5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Like <a class="el" href="group__backtrace.html#ga3747bea884034d32d4d558872223969e" title="Walk the stack and return the current call stack.">backtrace</a>, but start from an arbitrary context. Useful for backtracing a thread. <br /></td></tr>
+<tr class="separator:a9b88fa9e4a83a768240718684a8c2de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga29121aee0428dbcf348d6218ad3c697c" id="r_ga29121aee0428dbcf348d6218ad3c697c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__backtrace.html#ga29121aee0428dbcf348d6218ad3c697c">backtrace_symbols_cb</a> (void **buffer, int size, uint32_t flags, void(*cb)(void *, <a class="el" href="group__backtrace.html#structbacktrace__frame__t">backtrace_frame_t</a> *), void *cb_arg)</td></tr>
 <tr class="memdesc:ga29121aee0428dbcf348d6218ad3c697c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Symbolize the buffer returned by <a class="el" href="group__backtrace.html#ga3747bea884034d32d4d558872223969e" title="Walk the stack and return the current call stack.">backtrace</a>, calling a callback for each frame.  <br /></td></tr>
 <tr class="separator:ga29121aee0428dbcf348d6218ad3c697c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -190,6 +194,14 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>inthandler</b> []
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>inthandler_end</b> []</td></tr>
 <tr class="memdesc:ac2cccfc3a3401d1735cc73f85133c344"><td class="mdescLeft">&#160;</td><td class="mdescRight">End of exception handler (see inthandler.S) <br /></td></tr>
 <tr class="separator:ac2cccfc3a3401d1735cc73f85133c344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac58864163c732d77c77afceb285542c5" id="r_ac58864163c732d77c77afceb285542c5"><td class="memItemLeft" align="right" valign="top"><a id="ac58864163c732d77c77afceb285542c5" name="ac58864163c732d77c77afceb285542c5"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>__text_start</b> []</td></tr>
+<tr class="memdesc:ac58864163c732d77c77afceb285542c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start of main executable text section. <br /></td></tr>
+<tr class="separator:ac58864163c732d77c77afceb285542c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8d2090f0bcd60292b07a1d1ce0b8c0" id="r_a1a8d2090f0bcd60292b07a1d1ce0b8c0"><td class="memItemLeft" align="right" valign="top"><a id="a1a8d2090f0bcd60292b07a1d1ce0b8c0" name="a1a8d2090f0bcd60292b07a1d1ce0b8c0"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>__text_end</b> []</td></tr>
+<tr class="memdesc:a1a8d2090f0bcd60292b07a1d1ce0b8c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">End of main executable text section. <br /></td></tr>
+<tr class="separator:a1a8d2090f0bcd60292b07a1d1ce0b8c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Backtrace (call stack) support. </p>
@@ -487,7 +499,7 @@ Offset of the symbol within its function. </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 23 2024 22:29:51 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Mon Jan 6 2025 21:45:18 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -9,7 +9,7 @@ var searchData=
   ['improvements_20over_20raw_20hardware_20programming_6',['Improvements over raw hardware programming',['../rdpq_8c.html#autotoc_md12',1,'']]],
   ['in_20block_20mode_7',['RDP commands in block mode',['../rdpq_8c.html#autotoc_md24',1,'']]],
   ['in_20standard_20mode_8',['in standard mode',['../rdpq_8c.html#autotoc_md22',1,'RDP commands in standard mode'],['../rdpq_8c.html#autotoc_md23',1,'RDP fixups in standard mode']]],
-  ['info_9',['info',['../group__exceptions.html#a05e27f4f7ffca11f72050238adf56e14',1,'exception_t']]],
+  ['info_9',['info',['../group__exceptions.html#a05e27f4f7ffca11f72050238adf56e14',1,'exception_t::info'],['../structdso__reloc__t.html#a8c13dd13b665b4abe3599cb08f8cbc4a',1,'dso_reloc_t::info'],['../structdso__sym__t.html#a225dd00cdf7060226a9ce29121048400',1,'dso_sym_t::info']]],
   ['inline_20functions_20vs_20no_20inline_10',['Usage of inline functions vs no-inline',['../rdpq_8c.html#autotoc_md19',1,'']]],
   ['inode_11',['inode',['../group__controllerpak.html#a7370d297cba84f180f10bafa46cefba7',1,'entry_structure_t']]],
   ['inplace_5fmargin_12',['inplace_margin',['../structasset__header__t.html#a9c003831c36190373b848672aa8fa6c1',1,'asset_header_t']]],

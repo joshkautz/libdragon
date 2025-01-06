@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['offset_0',['offset',['../rompak_8c.html#a5a87eaf264688fa99714ef359764e8c4',1,'entry_t']]],
+  ['offset_0',['offset',['../structdso__reloc__t.html#a77bfab1b96dc40366e65f60623e380f7',1,'dso_reloc_t::offset'],['../rompak_8c.html#a5a87eaf264688fa99714ef359764e8c4',1,'entry_t::offset']]],
   ['old_5flicensee_5fcode_1',['old_licensee_code',['../tpak_8h.html#abf1e36b71ecfa4bd6f034abda03c05fe',1,'gameboy_cartridge_header']]],
   ['old_5ftitle_2',['old_title',['../tpak_8h.html#a6256f37c03a9662f5dbbfcafeb5120cf',1,'gameboy_cartridge_header.__unnamed44__']]],
   ['open_3',['open',['../structfilesystem__t.html#a65220025714418f98076e1334237408e',1,'filesystem_t']]],

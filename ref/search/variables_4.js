@@ -17,10 +17,14 @@ var searchData=
   ['decompress_5freset_14',['decompress_reset',['../structasset__compression__t.html#aeb9fd511a9f0e4e65dab4243621a241d',1,'asset_compression_t']]],
   ['destination_5fcode_15',['destination_code',['../tpak_8h.html#a00a88388538792b386dfadb75decbaf1',1,'gameboy_cartridge_header']]],
   ['detail_16',['detail',['../structsprite__ext__t.html#adf6770779c4687e8924c5402cd84fa4a',1,'sprite_ext_t']]],
-  ['dmem_17',['dmem',['../rsp_8h.html#a828abbd16a038db42094df8831602934',1,'rsp_snapshot_t']]],
-  ['dom1_5flatency_18',['dom1_latency',['../group__lowlevel.html#a0879372fbf44dfa7a81c304909a1b910',1,'PI_regs_t']]],
-  ['dom1_5fpulse_5fwidth_19',['dom1_pulse_width',['../group__lowlevel.html#a31dcc75804223b3af9d5303a52abd7f1',1,'PI_regs_t']]],
-  ['down_20',['down',['../group__controller.html#a74e8333ad11685ff3bdae589c8f6e34d',1,'_SI_condat.__unnamed20__.__unnamed24__']]],
-  ['dp_5fcallback_21',['DP_callback',['../interrupt_8c.html#a5d91906f92df789296192c5b4b0ba072',1,'interrupt.c']]],
-  ['dram_5faddr_22',['dram_addr',['../group__lowlevel.html#ab2e4d926b99faddaa5a7716f74ce5185',1,'SI_regs_t::DRAM_addr'],['../group__lowlevel.html#a1785954c779d289d08208e30b44d0482',1,'SP_regs_t::DRAM_addr']]]
+  ['dli_5ffbase_17',['dli_fbase',['../dlfcn_8h.html#ae1bb9463ad67a5953172a08722f1b9db',1,'Dl_info']]],
+  ['dli_5ffname_18',['dli_fname',['../dlfcn_8h.html#abec29d3a98b5b69fd6bf077979d2c3c5',1,'Dl_info']]],
+  ['dli_5fsaddr_19',['dli_saddr',['../dlfcn_8h.html#a8df357b133c0a04d70c5c69f7297c1cf',1,'Dl_info']]],
+  ['dli_5fsname_20',['dli_sname',['../dlfcn_8h.html#a92a9c5892ca0eb36e4b0457967d2201b',1,'Dl_info']]],
+  ['dmem_21',['dmem',['../rsp_8h.html#a828abbd16a038db42094df8831602934',1,'rsp_snapshot_t']]],
+  ['dom1_5flatency_22',['dom1_latency',['../group__lowlevel.html#a0879372fbf44dfa7a81c304909a1b910',1,'PI_regs_t']]],
+  ['dom1_5fpulse_5fwidth_23',['dom1_pulse_width',['../group__lowlevel.html#a31dcc75804223b3af9d5303a52abd7f1',1,'PI_regs_t']]],
+  ['down_24',['down',['../group__controller.html#a74e8333ad11685ff3bdae589c8f6e34d',1,'_SI_condat.__unnamed20__.__unnamed24__']]],
+  ['dp_5fcallback_25',['DP_callback',['../interrupt_8c.html#a5d91906f92df789296192c5b4b0ba072',1,'interrupt.c']]],
+  ['dram_5faddr_26',['dram_addr',['../group__lowlevel.html#ab2e4d926b99faddaa5a7716f74ce5185',1,'SI_regs_t::DRAM_addr'],['../group__lowlevel.html#a1785954c779d289d08208e30b44d0482',1,'SP_regs_t::DRAM_addr']]]
 ];
