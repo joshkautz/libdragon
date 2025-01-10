@@ -87,10 +87,6 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ab4697bd88e981205a5c85c90ddb0f8aa" id="r_ab4697bd88e981205a5c85c90ddb0f8aa"><td class="memItemLeft" align="right" valign="top"><a id="ab4697bd88e981205a5c85c90ddb0f8aa" name="ab4697bd88e981205a5c85c90ddb0f8aa"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>VADPCM_REFERENCE_DECODER</b>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ab4697bd88e981205a5c85c90ddb0f8aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to 1 to use the reference C decode for VADPCM. <br /></td></tr>
-<tr class="separator:ab4697bd88e981205a5c85c90ddb0f8aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ebc55429ed20a91fac441986024ba61" id="r_a2ebc55429ed20a91fac441986024ba61"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8c.html#a2ebc55429ed20a91fac441986024ba61">WAV_RIFF_ID</a>&#160;&#160;&#160;&quot;RIFF&quot;</td></tr>
 <tr class="separator:a2ebc55429ed20a91fac441986024ba61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac353e6233bc992b82218f9bfdb804e62" id="r_ac353e6233bc992b82218f9bfdb804e62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8c.html#ac353e6233bc992b82218f9bfdb804e62">WAV_RIFX_ID</a>&#160;&#160;&#160;&quot;RIFX&quot;</td></tr>
@@ -98,12 +94,15 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac95cb68d7755ca7bc8b153be684c395e" id="r_ac95cb68d7755ca7bc8b153be684c395e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8c.html#ac95cb68d7755ca7bc8b153be684c395e">raw_waveform_read</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *sbuf, int base_rom_addr, int wpos, int wlen, int bps)</td></tr>
-<tr class="memdesc:ac95cb68d7755ca7bc8b153be684c395e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function to help implementing <a class="el" href="mixer_8h.html#ab0e995bf04880a3e14f689f48fdb2475" title="Waveform callback function invoked by the mixer to read/generate samples.">WaveformRead</a> for uncompressed (raw) samples.  <br /></td></tr>
-<tr class="separator:ac95cb68d7755ca7bc8b153be684c395e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad66af3ff9f0c1d51211cc72c1b92a6e9" id="r_ad66af3ff9f0c1d51211cc72c1b92a6e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8c.html#ad66af3ff9f0c1d51211cc72c1b92a6e9">wav64_open</a> (<a class="el" href="wav64_8h.html#structwav64__t">wav64_t</a> *wav, const char *fn)</td></tr>
-<tr class="memdesc:ad66af3ff9f0c1d51211cc72c1b92a6e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a WAV64 file for playback.  <br /></td></tr>
-<tr class="separator:ad66af3ff9f0c1d51211cc72c1b92a6e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31ea0b9960de89db019912f3b8d98f94" id="r_a31ea0b9960de89db019912f3b8d98f94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8c.html#a31ea0b9960de89db019912f3b8d98f94">raw_waveform_read</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *sbuf, int current_fd, int wpos, int wlen, int bps)</td></tr>
+<tr class="memdesc:a31ea0b9960de89db019912f3b8d98f94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function to help implementing <a class="el" href="mixer_8h.html#ab0e995bf04880a3e14f689f48fdb2475" title="Waveform callback function invoked by the mixer to read/generate samples.">WaveformRead</a> for uncompressed (raw) samples.  <br /></td></tr>
+<tr class="separator:a31ea0b9960de89db019912f3b8d98f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72a2c906c54e1fa0c6b203937ab92a7e" id="r_a72a2c906c54e1fa0c6b203937ab92a7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8c.html#a72a2c906c54e1fa0c6b203937ab92a7e">raw_waveform_read_address</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *sbuf, int base_rom_addr, int wpos, int wlen, int bps)</td></tr>
+<tr class="memdesc:a72a2c906c54e1fa0c6b203937ab92a7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function to help implementing <a class="el" href="mixer_8h.html#ab0e995bf04880a3e14f689f48fdb2475" title="Waveform callback function invoked by the mixer to read/generate samples.">WaveformRead</a> for uncompressed (raw) samples.  <br /></td></tr>
+<tr class="separator:a72a2c906c54e1fa0c6b203937ab92a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62b743c8c56bd67b3f2231f770c99e78" id="r_a62b743c8c56bd67b3f2231f770c99e78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8c.html#a62b743c8c56bd67b3f2231f770c99e78">wav64_open</a> (<a class="el" href="wav64_8h.html#structwav64__t">wav64_t</a> *wav, const char *file_name)</td></tr>
+<tr class="memdesc:a62b743c8c56bd67b3f2231f770c99e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a WAV64 file for playback.  <br /></td></tr>
+<tr class="separator:a62b743c8c56bd67b3f2231f770c99e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0355ddf406260d86dd082bfd4f1ed0b" id="r_af0355ddf406260d86dd082bfd4f1ed0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8c.html#af0355ddf406260d86dd082bfd4f1ed0b">wav64_play</a> (<a class="el" href="wav64_8h.html#structwav64__t">wav64_t</a> *wav, int ch)</td></tr>
 <tr class="memdesc:af0355ddf406260d86dd082bfd4f1ed0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start playing a WAV64 file.  <br /></td></tr>
 <tr class="separator:af0355ddf406260d86dd082bfd4f1ed0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,8 +158,8 @@ int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>__wav64_profile_dm
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ac95cb68d7755ca7bc8b153be684c395e" name="ac95cb68d7755ca7bc8b153be684c395e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac95cb68d7755ca7bc8b153be684c395e">&#9670;&#160;</a></span>raw_waveform_read()</h2>
+<a id="a31ea0b9960de89db019912f3b8d98f94" name="a31ea0b9960de89db019912f3b8d98f94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31ea0b9960de89db019912f3b8d98f94">&#9670;&#160;</a></span>raw_waveform_read()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +174,7 @@ int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>__wav64_profile_dm
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>base_rom_addr</em>, </td>
+          <td class="paramname"><em>fd</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -204,12 +203,61 @@ int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>__wav64_profile_dm
 </div><div class="memdoc">
 
 <p>Utility function to help implementing <a class="el" href="mixer_8h.html#ab0e995bf04880a3e14f689f48fdb2475" title="Waveform callback function invoked by the mixer to read/generate samples.">WaveformRead</a> for uncompressed (raw) samples. </p>
-<p>This function uses PI DMA to load samples from ROM into the sample buffer. </p>
+<p>This function uses a file descriptor to load samples from ROM into the sample buffer. </p>
 
 </div>
 </div>
-<a id="ad66af3ff9f0c1d51211cc72c1b92a6e9" name="ad66af3ff9f0c1d51211cc72c1b92a6e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad66af3ff9f0c1d51211cc72c1b92a6e9">&#9670;&#160;</a></span>wav64_open()</h2>
+<a id="a72a2c906c54e1fa0c6b203937ab92a7e" name="a72a2c906c54e1fa0c6b203937ab92a7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72a2c906c54e1fa0c6b203937ab92a7e">&#9670;&#160;</a></span>raw_waveform_read_address()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void raw_waveform_read_address </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *&#160;</td>
+          <td class="paramname"><em>sbuf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rom_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wpos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wlen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Utility function to help implementing <a class="el" href="mixer_8h.html#ab0e995bf04880a3e14f689f48fdb2475" title="Waveform callback function invoked by the mixer to read/generate samples.">WaveformRead</a> for uncompressed (raw) samples. </p>
+<p>This function uses PI DMA to load samples from ROM into the sample buffer. Note: Tempory function should be removed when XM64 moves to using FILE*. </p>
+
+</div>
+</div>
+<a id="a62b743c8c56bd67b3f2231f770c99e78" name="a62b743c8c56bd67b3f2231f770c99e78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62b743c8c56bd67b3f2231f770c99e78">&#9670;&#160;</a></span>wav64_open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -273,7 +321,8 @@ int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>__wav64_profile_dm
 </div><div class="memdoc">
 
 <p>Start playing a WAV64 file. </p>
-<p>This is just a simple wrapper that calls <a class="el" href="mixer_8c.html#a1aa94701f22d086d624fb7d938ba0062" title="Start playing the specified waveform on the specified channel.">mixer_ch_play</a> on the WAV64's waveform (<a class="el" href="wav64_8h.html#a4201df70d0e73f29e11d22666cc0b0bd" title="waveform_t for this WAV64.">wav64_t::wave</a>). For advanced usages, please call directly the mixer functions.</p>
+<p>This is just a simple wrapper that calls <a class="el" href="mixer_8c.html#a1aa94701f22d086d624fb7d938ba0062" title="Start playing the specified waveform on the specified channel.">mixer_ch_play</a> on the WAV64's waveform (wav64_t::wave). For advanced usages, please call directly the mixer functions.</p>
+<p>It is possible to start the same waveform on multiple independent channels. Playback will automatically stop when the waveform is finished, unless it is looping. To stop playing a wav64 file before it is normally finished, call <a class="el" href="mixer_8c.html#ae21b093a1283e06ede42363498c490cb" title="Stop playing samples on the specified channel.">mixer_ch_stop</a> on the channel used for playback.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wav</td><td>Pointer to <a class="el" href="wav64_8h.html#structwav64__t" title="WAV64 structure.">wav64_t</a> structure </td></tr>
@@ -328,6 +377,7 @@ int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>__wav64_profile_dm
 </div><div class="memdoc">
 
 <p>Close a WAV64 file. </p>
+<p>This function closes the file and frees any resources associated with it. If the file is currently playing, playback will be stopped.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wav</td><td>Pointer to <a class="el" href="wav64_8h.html#structwav64__t" title="WAV64 structure.">wav64_t</a> structure </td></tr>
@@ -340,7 +390,7 @@ int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>__wav64_profile_dm
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jan 7 2025 15:08:11 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Fri Jan 10 2025 13:06:33 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

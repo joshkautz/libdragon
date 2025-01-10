@@ -142,6 +142,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CH_FLAGS_STEREO_SUB</b>&#160;&#160;&#160;(1&lt;&lt;4)</td></tr>
 <tr class="memdesc:ae3afc740f203dd8ee2c91f4bc131ba4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The channel is the second half of a stereo (right) <br /></td></tr>
 <tr class="separator:ae3afc740f203dd8ee2c91f4bc131ba4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7584bc65bfc76f291d878e8588bd3d6a" id="r_a7584bc65bfc76f291d878e8588bd3d6a"><td class="memItemLeft" align="right" valign="top"><a id="a7584bc65bfc76f291d878e8588bd3d6a" name="a7584bc65bfc76f291d878e8588bd3d6a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CH_FLAGS_STEREO_ALLOC</b>&#160;&#160;&#160;(1&lt;&lt;5)</td></tr>
+<tr class="memdesc:a7584bc65bfc76f291d878e8588bd3d6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The channel has a buffer sized for stereo. <br /></td></tr>
+<tr class="separator:a7584bc65bfc76f291d878e8588bd3d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ea77e91bbb1541f75bd80cf3ccd202c" id="r_a2ea77e91bbb1541f75bd80cf3ccd202c"><td class="memItemLeft" align="right" valign="top"><a id="a2ea77e91bbb1541f75bd80cf3ccd202c" name="a2ea77e91bbb1541f75bd80cf3ccd202c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MIXER_FX64_FRAC</b>&#160;&#160;&#160;12</td></tr>
 <tr class="memdesc:a2ea77e91bbb1541f75bd80cf3ccd202c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of fractional bits in <a class="el" href="mixer_8c.html#a069b3606e77970b602abe506f449254c" title="Fixed point value used in waveform position calculations. This is a signed 64-bit integer with the fr...">mixer_fx64_t</a>. <br /></td></tr>
@@ -225,6 +229,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>mixer_close</b> (void
 void&#160;</td><td class="memItemRight" valign="bottom"><b>mixer_ch_stop</b> (int ch)</td></tr>
 <tr class="memdesc:ae21b093a1283e06ede42363498c490cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop playing samples on the specified channel. <br /></td></tr>
 <tr class="separator:ae21b093a1283e06ede42363498c490cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83a24f4828f1642a657e7442ab2f1fee" id="r_a83a24f4828f1642a657e7442ab2f1fee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mixer_8c.html#a83a24f4828f1642a657e7442ab2f1fee">__mixer_wave_stopall</a> (<a class="el" href="mixer_8h.html#structwaveform__t">waveform_t</a> *wave)</td></tr>
+<tr class="separator:a83a24f4828f1642a657e7442ab2f1fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1893d5fc9d44b0e37ce0ef82afb71f37" id="r_a1893d5fc9d44b0e37ce0ef82afb71f37"><td class="memItemLeft" align="right" valign="top"><a id="a1893d5fc9d44b0e37ce0ef82afb71f37" name="a1893d5fc9d44b0e37ce0ef82afb71f37"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>mixer_ch_playing</b> (int ch)</td></tr>
 <tr class="memdesc:a1893d5fc9d44b0e37ce0ef82afb71f37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the channel is currently playing samples. <br /></td></tr>
@@ -875,6 +881,25 @@ Opaque context pointer to pass to the callback. </td></tr>
 
 </div>
 </div>
+<a id="a83a24f4828f1642a657e7442ab2f1fee" name="a83a24f4828f1642a657e7442ab2f1fee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83a24f4828f1642a657e7442ab2f1fee">&#9670;&#160;</a></span>__mixer_wave_stopall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __mixer_wave_stopall </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="mixer_8h.html#structwaveform__t">waveform_t</a> *&#160;</td>
+          <td class="paramname"><em>wave</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check if a certain waveform is currently playing on some channel </p>
+
+</div>
+</div>
 <a id="aa6151c20fc5ddfa953c9d2dabe1da294" name="aa6151c20fc5ddfa953c9d2dabe1da294"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa6151c20fc5ddfa953c9d2dabe1da294">&#9670;&#160;</a></span>mixer_ch_set_limits()</h2>
 
@@ -1058,7 +1083,7 @@ Opaque context pointer to pass to the callback. </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jan 7 2025 15:08:11 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Fri Jan 10 2025 13:06:33 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

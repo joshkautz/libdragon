@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r_0',['r',['../group__graphics.html#a9138f903c9036862cfeab970b156b62d',1,'color_t::r'],['../group__controller.html#ae1e1d3d40573127e9ee0480caf1283d6',1,'_SI_condat.__unnamed20__.__unnamed24__::R']]],
+  ['r_0',['r',['../group__controller.html#ae1e1d3d40573127e9ee0480caf1283d6',1,'_SI_condat.__unnamed20__.__unnamed24__::R'],['../group__graphics.html#a9138f903c9036862cfeab970b156b62d',1,'color_t::r']]],
   ['ra_5foffset_1',['ra_offset',['../structbt__func__t.html#a84458a7752c5604f07159aef57b67f71',1,'bt_func_t']]],
   ['ram_5faddress_2',['ram_address',['../group__lowlevel.html#a9c462b86aed69b69730e770a6ad69107',1,'PI_regs_t']]],
   ['ram_5fsize_5fcode_3',['ram_size_code',['../tpak_8h.html#a0969c89ebf119da8111dd43c00cf76cb',1,'gameboy_cartridge_header']]],
@@ -40,7 +40,7 @@ var searchData=
   ['ringbuf_37',['ringbuf',['../structlz4dec__state__t.html#ab72b17cf450697c16aa55b3e7fd629b6',1,'lz4dec_state_t::ringbuf'],['../structdecompress__ringbuf__t.html#a9d6b02275eadf6be283a6e1a22ea6273',1,'decompress_ringbuf_t::ringbuf'],['../structaplib__decompressor__t_8partial.html#a34bb9c71fa55494db8b0c69e4a52a5d9',1,'aplib_decompressor_t.partial::ringbuf']]],
   ['ringbuf_5fpos_38',['ringbuf_pos',['../structdecompress__ringbuf__t.html#ab010cbfe725447fb5964a6f819aa4d6a',1,'decompress_ringbuf_t']]],
   ['ringbuf_5fsize_39',['ringbuf_size',['../structdecompress__ringbuf__t.html#a212bd81af52dfb00aa6798eafda60574',1,'decompress_ringbuf_t']]],
-  ['rom_5faddr_40',['rom_addr',['../structaplib__decompressor__t.html#a747e3885ed67259104faa7343235b49a',1,'aplib_decompressor_t::rom_addr'],['../wav64_8h.html#aff33a7f2c7737303555452395080954c',1,'wav64_t::rom_addr']]],
+  ['rom_5faddr_40',['rom_addr',['../structaplib__decompressor__t.html#a747e3885ed67259104faa7343235b49a',1,'aplib_decompressor_t']]],
   ['rom_5fsize_5fcode_41',['rom_size_code',['../tpak_8h.html#a8681d565d1586a01ef7312153314947e',1,'gameboy_cartridge_header']]],
   ['rsp_5faddr_42',['RSP_addr',['../group__lowlevel.html#a3d08d222ced301db8ce00c2bb555726d',1,'SP_regs_t']]],
   ['rsp_5fdma_5fbusy_43',['rsp_dma_busy',['../group__lowlevel.html#acc2be55c7111a79182565fbf63489865',1,'SP_regs_t']]],

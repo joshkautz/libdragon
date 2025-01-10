@@ -104,6 +104,9 @@ Functions</h2></td></tr>
 <tr class="separator:aa16bbcb1683deb8206e06bd9128f9b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1ed7b8b55c07c6c6a4c6471e94e6145" id="r_ae1ed7b8b55c07c6c6a4c6471e94e6145"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="samplebuffer_8c.html#ae1ed7b8b55c07c6c6a4c6471e94e6145">samplebuffer_set_waveform</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *buf, <a class="el" href="mixer_8h.html#ab0e995bf04880a3e14f689f48fdb2475">WaveformRead</a> <a class="el" href="system_8c.html#a0b746547993d7baf3b092ae620bfa666">read</a>, void *ctx)</td></tr>
 <tr class="separator:ae1ed7b8b55c07c6c6a4c6471e94e6145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7252a6b63af132338f6e1b8a10cb1c03" id="r_a7252a6b63af132338f6e1b8a10cb1c03"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="samplebuffer_8c.html#a7252a6b63af132338f6e1b8a10cb1c03">samplebuffer_is_inited</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *buf)</td></tr>
+<tr class="memdesc:a7252a6b63af132338f6e1b8a10cb1c03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the samplebuffer is initialized.  <br /></td></tr>
+<tr class="separator:a7252a6b63af132338f6e1b8a10cb1c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4648f973933db48c4aa1c3252333e8c7" id="r_a4648f973933db48c4aa1c3252333e8c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="samplebuffer_8c.html#a4648f973933db48c4aa1c3252333e8c7">samplebuffer_close</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *buf)</td></tr>
 <tr class="separator:a4648f973933db48c4aa1c3252333e8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b810c10cdb970e8bebbfddce80fdea1" id="r_a7b810c10cdb970e8bebbfddce80fdea1"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="samplebuffer_8c.html#a7b810c10cdb970e8bebbfddce80fdea1">samplebuffer_get</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *buf, int wpos, int *wlen)</td></tr>
@@ -112,6 +115,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a392b4b826167c5157e983a18493cd4b5" id="r_a392b4b826167c5157e983a18493cd4b5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="samplebuffer_8c.html#a392b4b826167c5157e983a18493cd4b5">samplebuffer_append</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *buf, int wlen)</td></tr>
 <tr class="memdesc:a392b4b826167c5157e983a18493cd4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append samples into the buffer (zero-copy).  <br /></td></tr>
 <tr class="separator:a392b4b826167c5157e983a18493cd4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac38268641091505733db16c3b79c569d" id="r_ac38268641091505733db16c3b79c569d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="samplebuffer_8c.html#ac38268641091505733db16c3b79c569d">samplebuffer_undo</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *buf, int wlen)</td></tr>
+<tr class="memdesc:ac38268641091505733db16c3b79c569d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the a specified number of samples from the tail of the buffer.  <br /></td></tr>
+<tr class="separator:ac38268641091505733db16c3b79c569d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af577070f844a4ab787911a647bf51f22" id="r_af577070f844a4ab787911a647bf51f22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="samplebuffer_8c.html#af577070f844a4ab787911a647bf51f22">samplebuffer_discard</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *buf, int wpos)</td></tr>
 <tr class="separator:af577070f844a4ab787911a647bf51f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3fe6abffc750a427326ed2490a64067" id="r_ae3fe6abffc750a427326ed2490a64067"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="samplebuffer_8c.html#ae3fe6abffc750a427326ed2490a64067">samplebuffer_flush</a> (<a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *buf)</td></tr>
@@ -246,6 +252,35 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a7252a6b63af132338f6e1b8a10cb1c03" name="a7252a6b63af132338f6e1b8a10cb1c03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7252a6b63af132338f6e1b8a10cb1c03">&#9670;&#160;</a></span>samplebuffer_is_inited()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool samplebuffer_is_inited </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return true if the samplebuffer is initialized. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Sample buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true If the sample buffer is initialized. </dd>
+<dd>
+false If the sample buffer is not initialized. </dd></dl>
+
+</div>
+</div>
 <a id="a4648f973933db48c4aa1c3252333e8c7" name="a4648f973933db48c4aa1c3252333e8c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4648f973933db48c4aa1c3252333e8c7">&#9670;&#160;</a></span>samplebuffer_close()</h2>
 
@@ -364,6 +399,45 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ac38268641091505733db16c3b79c569d" name="ac38268641091505733db16c3b79c569d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac38268641091505733db16c3b79c569d">&#9670;&#160;</a></span>samplebuffer_undo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void samplebuffer_undo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="samplebuffer_8h.html#structsamplebuffer__t">samplebuffer_t</a> *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove the a specified number of samples from the tail of the buffer. </p>
+<p>This function removes the last <em>wlen</em> samples from the buffer. It can be used to revert the behavior of a <a class="el" href="samplebuffer_8h.html#a392b4b826167c5157e983a18493cd4b5" title="Append samples into the buffer (zero-copy).">samplebuffer_append</a> call, if the data written to the buffer was too much.</p>
+<p>A common situation is an implementation of a waveform codec with fixed audio frames. The last frame at the end of the waveform will likely need to be truncated, but the compressor would have likely padded it with zeros to make it the same size as the others. In this case, at playing time, it is possible to call <a class="el" href="samplebuffer_8h.html#a392b4b826167c5157e983a18493cd4b5" title="Append samples into the buffer (zero-copy).">samplebuffer_append</a> to append the whole frame, but then remove the unneeded padding with a call to <a class="el" href="samplebuffer_8h.html#ac38268641091505733db16c3b79c569d" title="Remove the a specified number of samples from the tail of the buffer.">samplebuffer_undo</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Sample buffer </td></tr>
+    <tr><td class="paramname">wlen</td><td>Number of samples to remove </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af577070f844a4ab787911a647bf51f22" name="af577070f844a4ab787911a647bf51f22"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af577070f844a4ab787911a647bf51f22">&#9670;&#160;</a></span>samplebuffer_discard()</h2>
 
@@ -429,7 +503,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jan 7 2025 15:08:11 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Fri Jan 10 2025 13:06:33 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

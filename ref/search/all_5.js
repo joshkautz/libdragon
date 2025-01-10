@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_0',['a',['../group__controller.html#a7fc56270e7a70fa81a5935b72eacbe29',1,'_SI_condat.__unnamed20__.__unnamed24__::A'],['../group__graphics.html#a56f318d39568f62bc8c09e3cddb76216',1,'color_t::a']]],
+  ['a_0',['a',['../group__graphics.html#a56f318d39568f62bc8c09e3cddb76216',1,'color_t::a'],['../group__controller.html#a7fc56270e7a70fa81a5935b72eacbe29',1,'_SI_condat.__unnamed20__.__unnamed24__::A']]],
   ['a_20development_20cartridge_20on_20a_20real_20n64_1',['Using a development cartridge on a real N64',['../index.html#autotoc_md5',1,'']]],
   ['a_20rom_2',['a rom',['../index.html#autotoc_md2',1,'Getting started: how to build a ROM'],['../index.html#autotoc_md3',1,'Getting started: how to run a ROM']]],
   ['aa_5fnone_3',['AA_NONE',['../rdpq__mode_8h.html#a59160968c70168c743a484d8f7c93bcba532bb054c746da3b1ac0bd2be96046f0',1,'rdpq_mode.h']]],

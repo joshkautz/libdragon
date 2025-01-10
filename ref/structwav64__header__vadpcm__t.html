@@ -79,7 +79,7 @@ $(function() {
 <p>Extended header for a WAV64 file with VADPCM compression.  
  <a href="structwav64__header__vadpcm__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="wav64internal_8h_source.html">wav64internal.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="wav64__internal_8h_source.html">wav64_internal.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -91,15 +91,14 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>npredictors</b></td
 int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>order</b></td></tr>
 <tr class="memdesc:ad3fe1f6ae171c3fff9f67076d09335eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Order of the predictors. <br /></td></tr>
 <tr class="separator:ad3fe1f6ae171c3fff9f67076d09335eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1755e00149d01c58635f3ade42dc763" id="r_af1755e00149d01c58635f3ade42dc763"><td class="memItemLeft" align="right" valign="top"><a id="af1755e00149d01c58635f3ade42dc763" name="af1755e00149d01c58635f3ade42dc763"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>padding</b></td></tr>
-<tr class="memdesc:af1755e00149d01c58635f3ade42dc763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Padding <br  />
- <br /></td></tr>
-<tr class="separator:af1755e00149d01c58635f3ade42dc763"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f258ce8c9e539fa5d709e1fc77a233b" id="r_a6f258ce8c9e539fa5d709e1fc77a233b"><td class="memItemLeft" align="right" valign="top"><a id="a6f258ce8c9e539fa5d709e1fc77a233b" name="a6f258ce8c9e539fa5d709e1fc77a233b"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_rom_addr</b></td></tr>
-<tr class="memdesc:a6f258ce8c9e539fa5d709e1fc77a233b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current address in ROM. <br /></td></tr>
-<tr class="separator:a6f258ce8c9e539fa5d709e1fc77a233b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a992aa8b31d4b0d9a55dbef8fe107b191" id="r_a992aa8b31d4b0d9a55dbef8fe107b191"><td class="memItemLeft" align="right" valign="top"><a id="a992aa8b31d4b0d9a55dbef8fe107b191" name="a992aa8b31d4b0d9a55dbef8fe107b191"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>padding</b></td></tr>
+<tr class="memdesc:a992aa8b31d4b0d9a55dbef8fe107b191"><td class="mdescLeft">&#160;</td><td class="mdescRight">padding <br /></td></tr>
+<tr class="separator:a992aa8b31d4b0d9a55dbef8fe107b191"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e46276c8b8681e1101059d1ed79234e" id="r_a2e46276c8b8681e1101059d1ed79234e"><td class="memItemLeft" align="right" valign="top"><a id="a2e46276c8b8681e1101059d1ed79234e" name="a2e46276c8b8681e1101059d1ed79234e"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>padding1</b></td></tr>
+<tr class="memdesc:a2e46276c8b8681e1101059d1ed79234e"><td class="mdescLeft">&#160;</td><td class="mdescRight">padding1 <br /></td></tr>
+<tr class="separator:a2e46276c8b8681e1101059d1ed79234e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aada5ae6c444e6f117dc42598a7aac442" id="r_aada5ae6c444e6f117dc42598a7aac442"><td class="memItemLeft" align="right" valign="top"><a id="aada5ae6c444e6f117dc42598a7aac442" name="aada5ae6c444e6f117dc42598a7aac442"></a>
 <a class="el" href="structwav64__vadpcm__vector__t.html">wav64_vadpcm_vector_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>loop_state</b> [2]</td></tr>
 <tr class="memdesc:aada5ae6c444e6f117dc42598a7aac442"><td class="mdescLeft">&#160;</td><td class="mdescRight">State at the loop point. <br /></td></tr>
@@ -148,36 +147,35 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_rom_addr<
 
 </div>
 </div>
-<a id="af1755e00149d01c58635f3ade42dc763" name="af1755e00149d01c58635f3ade42dc763"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1755e00149d01c58635f3ade42dc763">&#9670;&#160;</a></span>padding</h2>
+<a id="a992aa8b31d4b0d9a55dbef8fe107b191" name="a992aa8b31d4b0d9a55dbef8fe107b191"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a992aa8b31d4b0d9a55dbef8fe107b191">&#9670;&#160;</a></span>padding</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t wav64_header_vadpcm_t::padding</td>
+          <td class="memname">uint16_t wav64_header_vadpcm_t::padding</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Padding <br  />
- </p>
+<p>padding </p>
 
 </div>
 </div>
-<a id="a6f258ce8c9e539fa5d709e1fc77a233b" name="a6f258ce8c9e539fa5d709e1fc77a233b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f258ce8c9e539fa5d709e1fc77a233b">&#9670;&#160;</a></span>current_rom_addr</h2>
+<a id="a2e46276c8b8681e1101059d1ed79234e" name="a2e46276c8b8681e1101059d1ed79234e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e46276c8b8681e1101059d1ed79234e">&#9670;&#160;</a></span>padding1</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t wav64_header_vadpcm_t::current_rom_addr</td>
+          <td class="memname">uint32_t wav64_header_vadpcm_t::padding1</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Current address in ROM. </p>
+<p>padding1 </p>
 
 </div>
 </div>
@@ -230,12 +228,12 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>current_rom_addr<
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="wav64internal_8h_source.html">wav64internal.h</a></li>
+<li><a class="el" href="wav64__internal_8h_source.html">wav64_internal.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jan 7 2025 15:08:12 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Fri Jan 10 2025 13:06:34 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
