@@ -322,33 +322,33 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>RDP Command queue. </p>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 RDP Queue: implementation details</h1>
 <p>This documentation block describes the internal workings of the RDP Queue. This is useful to understand the implementation, but it is not required to read or understand this to use rdpq.</p>
 <p>For description of the API of the RDP queue, see <a class="el" href="rdpq_8h.html" title="RDP Command queue.">rdpq.h</a></p>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Improvements over raw hardware programming</h2>
 <p>RDPQ provides a very low-level API over the RDP graphics chips, exposing all its settings and most of its limits. Still, rdpq tries to hide a few low-level hardware details to make programming the RDP less surprising and more orthogonal. To do so, it "patches" some RDP commands, typically via RSP code and depending on the current RDP state. We called these improvements "fixups".</p>
 <p>The documentation of the public rdpq API does not explicitly mention which behavior has been adjusted via fixups. Instead, this section explains in details all the fixups performed by rdpq. Reading this section is not necessary to understand and use rdpq, but it might be useful for people that are familiar with RDP outside of libdragon (eg: libultra programmers), to avoid getting confused in places where rdpq deviates from RDP (even if for the better).</p>
-<h3><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md14"></a>
 Scissoring and texrects: consistent coordinates</h3>
 <p>The RDP SET_SCISSOR and TEXTURE_RECTANGLE commands accept a rectangle whose major bounds (bottom and right) are either inclusive or exclusive, depending on the current RDP cycle type (fill/copy: exclusive, 1cyc/2cyc: inclusive). <a class="el" href="rdpq_8h.html#ac5a643cb5e908bbc0a34ea3c5f02dcf3" title="Configure a scissoring rectangle in screen coordinates (RDP command: SET_SCISSOR)">rdpq_set_scissor</a> and <a class="el" href="rdpq__rect_8h.html#a7196362c567172a2012f414c8a412743" title="Draw a textured rectangle (RDP command: TEXTURE_RECTANGLE)">rdpq_texture_rectangle</a>, instead, always use exclusive major bounds, and automatically adjust them depending on the current RDP cycle type.</p>
 <p>Moreover, any time the RDP cycle type changes, the current scissoring is adjusted to guarantee consistent results. This is especially important where the scissoring covers the whole framebuffer, because otherwise the RDP might overflow the buffer while drawing.</p>
-<h3><a class="anchor" id="autotoc_md14"></a>
+<h3><a class="anchor" id="autotoc_md15"></a>
 Avoid color image buffer overflows with auto-scissoring</h3>
 <p>The RDP SET_COLOR_IMAGE command only contains a memory pointer and a pitch: the RDP is not aware of the actual size of the buffer in terms of width/height, and expects commands to be correctly clipped, or scissoring to be configured. To avoid mistakes leading to memory corruption, <a class="el" href="rdpq_8c.html#a9020360dcb7a05b4270d8a66e8dad6b7" title="Configure the framebuffer to render to (RDP command: SET_COLOR_IMAGE)">rdpq_set_color_image</a> always reconfigures scissoring to respect the actual buffer size.</p>
 <p>Note also that when the RDP is cold-booted, the internal scissoring register contains random data. This means that this auto-scissoring fixup also provides a workaround to this, by making sure scissoring is always configured at least once. In fact, by forgetting to configure scissoring, the RDP can happily draw outside the framebuffer, or draw nothing, or even freeze.</p>
-<h3><a class="anchor" id="autotoc_md15"></a>
+<h3><a class="anchor" id="autotoc_md16"></a>
 Autosync</h3>
 <p>The RDP has different internal parallel units and exposes three different syncing primitives to stall and avoid write-during-use bugs: SYNC_PIPE, SYNC_LOAD and SYNC_TILE. Correct usage of these commands is not complicated but it can be complex to get right, and require extensive hardware testing because emulators do not implement the bugs caused by the absence of RDP stalls.</p>
 <p>rdpq implements a smart auto-syncing engine that tracks the commands sent to RDP (on the CPU) and automatically inserts syncing whenever necessary. Insertion of syncing primitives is optimal for SYNC_PIPE and SYNC_TILE, and conservative for SYNC_LOAD (it does not currently handle partial TMEM updates).</p>
 <p>Autosync also works within blocks, but since it is not possible to know the context in which a block will be run, it has to be conservative and might issue more stalls than necessary.</p>
 <p>More details on the autosync engine are below.</p>
-<h3><a class="anchor" id="autotoc_md16"></a>
+<h3><a class="anchor" id="autotoc_md17"></a>
 Partial render mode changes</h3>
 <p>The RDP command SET_OTHER_MODES contains most the RDP mode settings. Unfortunately the command does not allow to change only some settings, but all of them must be reconfigured. This is in contrast with most graphics APIs that allow to configure each render mode setting by itself (eg: it is possible to just change the dithering algorithm).</p>
 <p>rdpq instead tracks the current render mode on the RSP, and allows to do partial updates via either the low-level <a class="el" href="rdpq_8c.html#a63486735278da233229c6cf5fb3b3aaf" title="Low-level function to partly change the rendering mode register.">rdpq_change_other_modes_raw</a> function (where it is possible to change only a subset of the 56 bits), or via the high-level rdpq_mode_* APIs (eg: <a class="el" href="rdpq__mode_8c.html#a9635e378432a4422d25953bf5e0425c4" title="Change dithering mode.">rdpq_mode_dithering</a>), which mostly build upon <a class="el" href="rdpq_8c.html#a63486735278da233229c6cf5fb3b3aaf" title="Low-level function to partly change the rendering mode register.">rdpq_change_other_modes_raw</a> in their implementation.</p>
-<h3><a class="anchor" id="autotoc_md17"></a>
+<h3><a class="anchor" id="autotoc_md18"></a>
 Automatic 1/2 cycle type selection</h3>
 <p>The RDP has two main operating modes: 1 cycle per pixel and 2 cycles per pixel. The latter is twice as slow, as the name implies, but it allows more complex color combiners and/or blenders. Moreover, 2-cycles mode also allows for multi-texturing.</p>
 <p>At the hardware level, it is up to the programmer to explicitly activate either 1-cycle or 2-cycle mode. The problem with this is that there are specific rules to follow for either mode, which does not compose cleanly with partial mode changes. For instance, fogging is typically implemented using the 2-cycle mode as it requires two passes in the blender. If the user disables fogging for some meshes, it might be more performant to switch back to 1-cycle mode, but that requires also reconfiguring the combiner.</p>
@@ -364,18 +364,18 @@ Automatic 1/2 cycle type selection</h3>
 <li>In 2 cycles mode, if a one-pass blender was configured by the user, it is configured in the second pass, while the first pass is defined as a passthrough (equivalent to <code>((PIXEL_RGB, ZERO, PIXEL_RGB, ONE))</code>). Notice that this is required because there is no pure passthrough in second step of the blender.</li>
 <li>RDPQ_COMBINER2 macro transparently handles the texture index swap in the second cycle. So while using the macro, TEX0 always refers to the first texture and TEX1 always refers to the second texture. Moreover, uses of TEX0/TEX1 in passes where they are not allowed would cause compilation errors, to avoid triggering undefined behaviours in RDP hardware.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md18"></a>
+<h3><a class="anchor" id="autotoc_md19"></a>
 Fill color as standard 32-bit color</h3>
 <p>The RDP command SET_FILL_COLOR (used to configure the color register to be used in fill cycle type) has a very low-level interface: its argument is basically a 32-bit value which is copied to the framebuffer as-is, irrespective of the framebuffer color depth. For a 16-bit buffer, then, it must be programmed with two copies of the same 16-bit color.</p>
 <p><a class="el" href="rdpq_8c.html#a70a6556d7d088ca2b745fa145e3aeee3" title="Enqueue a SET_FILL_COLOR RDP command.">rdpq_set_fill_color</a>, instead, accepts a <a class="el" href="group__graphics.html#structcolor__t" title="Generic color structure.">color_t</a> argument and does the conversion to the "packed" format internally, depending on the current framebuffer's color depth.</p>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 Usage of inline functions vs no-inline</h2>
 <p>Most of the rdpq APIs are defined as inline functions in the header <a class="el" href="rdpq_8h.html" title="RDP Command queue.">rdpq.h</a>, but they then internally call some non-public function to do emit the command. So basically the actual function is split in tow parts: an inlined part and a non-inlined part.</p>
 <p>The reason for this split is to help the compiler generate better code. In fact, it is extremely common to call rdpq functions using many constant parameters, and we want those constants to be propagated into the various bit shifts and masks to be assembled into single words. Once the (often constant) arguments have been handled, the rest of the operation can normally be performed in a separate out-of-line function.</p>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 Sending commands to RDP</h2>
 <p>This section describes in general how the commands flow from CPU to RDP via RSP. There are several different code-paths here depending on whether the command has a fixup or not, and it is part of a block.</p>
-<h3><a class="anchor" id="autotoc_md21"></a>
+<h3><a class="anchor" id="autotoc_md22"></a>
 RDRAM vs XBUS</h3>
 <p>In general, the rdpq library sends the commands to RDP using a buffer in RDRAM. The hardware feature called XBUS (which allows to send commands from RSP DMEM to RDP directly) is not used or supported. There are a few reasons for this architectural choice:</p>
 <ul>
@@ -383,7 +383,7 @@ RDRAM vs XBUS</h3>
 <li>One of the main advantages of using XBUS is that there is no need to copy data from RSP to RDRAM, saving memory bandwidth. To partially cope up with it, rdpq has some other tricks up its sleeve to save memory bandwidth (specifically how it works in block mode, see below).</li>
 </ul>
 <p>The buffer in RDRAM where RDP commands are enqueued by RSP is called "RDP dynamic buffer". It is used as a ring buffer, so once full, it is recycled, making sure not to overwrite commands that the RDP has not executed yet.</p>
-<h3><a class="anchor" id="autotoc_md22"></a>
+<h3><a class="anchor" id="autotoc_md23"></a>
 RDP commands in standard mode</h3>
 <p>Let's check the workflow for a standard RDP command, that is one for which rdpq provides no fixups:</p>
 <ul>
@@ -393,7 +393,7 @@ RDP commands in standard mode</h3>
 <li>RSP (rdpq code): the implementation for command <code>0xF3</code> is the same for all non-fixup commands: it writes the 8 bytes of the command into a temporary buffer in DMEM, and then sends it via DMA to the RDP dynamic buffer in RDRAM. This act of forwarding a command through CPU -&gt; RSP -&gt; RDP is called "passthrough", and is implemented by <code>RDPQCmd_Passthrough8</code> and <code>RDPQCmd_Passthrough16</code> in the ucode (rsp_rdpq.S), and <code>RSPQ_RdpSend</code> in rsp_queue.inc.</li>
 <li>RSP (rdpq code): after the DMA is finished, the RSP tells the RDP that a new command has been added to the dynamic buffer and can be executed whenever the RDP is ready. This is easily done by advancing the RDP <code>DP_END</code> register. When the buffer is finished, recycling it requires instead to write both <code>DP_START</code> and <code>DP_END</code>. See <code>RSPQCmd_RdpAppendBuffer</code> and <code>RSPQCmd_RdpSetBuffer</code> respectively.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md23"></a>
+<h3><a class="anchor" id="autotoc_md24"></a>
 RDP fixups in standard mode</h3>
 <p>Now let's see the workflow for a RDP fixup: these are the RDP commands which are modified/tweaked by RSP to provide a more sane programming interface to the programmer.</p>
 <ul>
@@ -404,7 +404,7 @@ RDP fixups in standard mode</h3>
 <li>RSP (rdpq code): after the DMA is finished, the RSP tells the RDP that a new command has been added to the dynamic buffer and can be executed whenever the RDP is ready.</li>
 </ul>
 <p>The overall workflow is similar to the passthrough, but the command is tweaked by RSP in the process.</p>
-<h3><a class="anchor" id="autotoc_md24"></a>
+<h3><a class="anchor" id="autotoc_md25"></a>
 RDP commands in block mode</h3>
 <p>In block mode, rdpq completely changes its way of operating.</p>
 <p>A rspq block (as described in <a class="el" href="rspq_8c.html" title="RSP Command queue.">rspq.c</a>) is a buffer containing a sequence of rspq commands that can be played back by RSP itself, with the CPU just triggering it via <a class="el" href="rspq_8c.html#ad078c001303a1b2153ba99f3184194f3" title="Add to the RSP queue a command that runs a block.">rspq_block_run</a>. When using rdpq, the rspq block contains one additional buffer: a "RDP static buffer", which contains RDP commands.</p>
@@ -424,7 +424,7 @@ RDP commands in block mode</h3>
 <li>RSP (rdpq code): the implementation for command <code>0xD2</code> is a RSP function called <code>RDPQCmd_SetScissorEx</code>. It inspects the RDP state to check the current cycle type and adapts the scissoring bounds if required. Then, it assembles a real SET_SCISSOR (with ID 0xD2) and calls <code>RSPQ_RdpSend</code> to send it to the RDP dynamic buffer.</li>
 <li>RSP (rdpq code): after the DMA is finished, the RSP tells the RDP that a new command has been added to the dynamic buffer and can be executed whenever the RDP is ready.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 Autosync engine</h2>
 <p>As explained above, the autosync engine is able to emit sync commands (SYNC_PIPE, SYNC_TILE, SYNC_LOAD) automatically when necessary, liberating the developer from this additional task. This section describes how it works.</p>
 <p>The autosync engine works around one simple abstraction and logic. There are "hardware resources" that can be either "used" or "changed" (aka configured) by RDP commands. If a resource is in use, a command changing it requires a sync before. Each resource is tracked by one bit in a single 32-bit word called the "autosync state".</p>
@@ -2397,7 +2397,7 @@ Address of the syncpoint ID in RDRAM. </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 11 2025 13:58:38 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Jan 11 2025 14:34:49 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -46,7 +46,7 @@ var searchData=
   ['emulators_43',['Using emulators',['../index.html#autotoc_md4',1,'']]],
   ['enable_5finterrupts_44',['enable_interrupts',['../interrupt_8c.html#a154b837080a092ecbab0735a0254c4b4',1,'enable_interrupts():&#160;interrupt.c'],['../interrupt_8h.html#a154b837080a092ecbab0735a0254c4b4',1,'enable_interrupts():&#160;interrupt.c']]],
   ['end_45',['end',['../rdpq__debug_8c.html#ad2ebc400b3ac450a59a83fe40fdef488',1,'rdp_buffer_t']]],
-  ['engine_46',['Autosync engine',['../rdpq_8c.html#autotoc_md25',1,'']]],
+  ['engine_46',['Autosync engine',['../rdpq_8c.html#autotoc_md26',1,'']]],
   ['entry_5fid_47',['entry_id',['../group__controllerpak.html#ad6124aefb1425f190a3665f7a0c3aefc',1,'entry_structure_t']]],
   ['entry_5fpoint_48',['entry_point',['../tpak_8h.html#ac476b4130c9762d331280ba2c9487505',1,'gameboy_cartridge_header']]],
   ['entry_5fsize_49',['entry_size',['../rompak_8c.html#a564175ef8d47609445276c3b375a5446',1,'header_t']]],

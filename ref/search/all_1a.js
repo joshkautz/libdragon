@@ -26,7 +26,7 @@ var searchData=
   ['validate_5fwarn_5ftex_23',['VALIDATE_WARN_TEX',['../rdpq__debug_8c.html#a8ab7aa2716e6db3bad803728b51b8724',1,'rdpq_debug.c']]],
   ['validate_5fwarn_5ftile_24',['VALIDATE_WARN_TILE',['../rdpq__debug_8c.html#af3a95ac661fdd4b67ec0fcc230816bd2',1,'rdpq_debug.c']]],
   ['validate_5fwarn_5ftilesize_25',['VALIDATE_WARN_TILESIZE',['../rdpq__debug_8c.html#abeca6729cec527b51cdb6cc74592cd25',1,'rdpq_debug.c']]],
-  ['validator_26',['Debugging: tracer and validator',['../group__rdpq.html#autotoc_md38',1,'']]],
+  ['validator_26',['Debugging: tracer and validator',['../group__rdpq.html#autotoc_md39',1,'']]],
   ['value_27',['value',['../structdso__sym__t.html#aa4a499cc0ab9f6c086d0cd4b1918ac75',1,'dso_sym_t']]],
   ['vctx_28',['vctx',['../rdpq__debug_8c.html#a70939eed667878128b83da6ab093e5fb',1,'rdpq_debug.c']]],
   ['vector_20coprocessor_29',['RSP: vector coprocessor',['../group__rsp.html',1,'']]],
@@ -95,8 +95,8 @@ var searchData=
   ['vi_5fy_5fscale_5fset_92',['VI_Y_SCALE_SET',['../group__display.html#ga0e6a2caf5dbfdcc516bfea8d0d3eb14b',1,'vi.h']]],
   ['vol_93',['vol',['../structAYEnvelope.html#abc79941d9d5d3d5c9f22f0b4d97cdffa',1,'AYEnvelope']]],
   ['vpr_94',['vpr',['../rsp_8h.html#a007496e4e8d0e57e66462151c8156051',1,'rsp_snapshot_t']]],
-  ['vs_20no_20inline_95',['Usage of inline functions vs no-inline',['../rdpq_8c.html#autotoc_md19',1,'']]],
+  ['vs_20no_20inline_95',['Usage of inline functions vs no-inline',['../rdpq_8c.html#autotoc_md20',1,'']]],
   ['vs_20preview_96',['Libdragon stable vs preview',['../index.html#autotoc_md6',1,'']]],
-  ['vs_20xbus_97',['RDRAM vs XBUS',['../rdpq_8c.html#autotoc_md21',1,'']]],
+  ['vs_20xbus_97',['RDRAM vs XBUS',['../rdpq_8c.html#autotoc_md22',1,'']]],
   ['vslices_98',['vslices',['../sprite_8h.html#a3b1f4d3f9dd51d45993bda45a6d474d3',1,'sprite_t']]]
 ];

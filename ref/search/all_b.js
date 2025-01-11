@@ -84,7 +84,7 @@ var searchData=
   ['getting_20started_3a_20how_20to_20build_20a_20rom_81',['Getting started: how to build a ROM',['../index.html#autotoc_md2',1,'']]],
   ['getting_20started_3a_20how_20to_20run_20a_20rom_82',['Getting started: how to run a ROM',['../index.html#autotoc_md3',1,'']]],
   ['global_5fchecksum_83',['global_checksum',['../tpak_8h.html#a5ac66f3681bc55d8a5501a625a704f38',1,'gameboy_cartridge_header']]],
-  ['goals_20of_20this_20library_84',['Goals of this library',['../group__rdpq.html#autotoc_md34',1,'']]],
+  ['goals_20of_20this_20library_84',['Goals of this library',['../group__rdpq.html#autotoc_md35',1,'']]],
   ['gpr_85',['gpr',['../rsp_8h.html#adad471a4ff79cf1d28e4a90e3c7d1ea2',1,'rsp_snapshot_t']]],
   ['graphics_86',['2D Graphics',['../group__graphics.html',1,'']]],
   ['graphics_2ec_87',['graphics.c',['../graphics_8c.html',1,'']]],

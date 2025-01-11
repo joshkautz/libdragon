@@ -254,7 +254,7 @@ Functions</h2></td></tr>
 <li>Filtering (<a class="el" href="rdpq__mode_8h.html#ab39285d295b7296dc6a48baf0043bea0" title="Activate texture filtering.">rdpq_mode_filter</a>): activate bilinear filtering.</li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>From a hardware perspective, rdpq handles automatically the "RDP cycle type". That is, it transparently switches from "1-cycle mode" to "2-cycle mode" whenever it is necessary. If you come from a RDP low-level programming background, it might be confusing at first because everything "just works" without needing to adjust settings any time you need to change a render state.</dd></dl>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 Mode setting stack</h2>
 <p>The mode API also keeps a small (4 entry) stack of mode configurations. This allows client code to temporarily switch render mode and then get back to the previous mode, which helps modularizing the code.</p>
 <p>To save the current render mode onto the stack, use <a class="el" href="rdpq__mode_8h.html#a0e81490ca8248e9b6611d972d85c2af2" title="Push the current render mode into the stack.">rdpq_mode_push</a>. To restore the previous render mode from the stack, use <a class="el" href="rdpq__mode_8h.html#ad7b6181f5298625ab630914102938eb0" title="Pop the current render mode from the stack.">rdpq_mode_pop</a>.</p>
@@ -1298,7 +1298,7 @@ Mode setting stack</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 11 2025 13:58:37 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Jan 11 2025 14:34:49 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
