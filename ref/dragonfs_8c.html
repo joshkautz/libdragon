@@ -122,9 +122,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aaf2eb04e1d1e8e9ed8733b88e41dc7e3" id="r_aaf2eb04e1d1e8e9ed8733b88e41dc7e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dragonfs_8c.html#aaf2eb04e1d1e8e9ed8733b88e41dc7e3">dfs_dir_findnext</a> (char *buf)</td></tr>
 <tr class="memdesc:aaf2eb04e1d1e8e9ed8733b88e41dc7e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the next file or directory in a directory listing.  <br /></td></tr>
 <tr class="separator:aaf2eb04e1d1e8e9ed8733b88e41dc7e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b32978567d57be77b43b6ce537cf620" id="r_a5b32978567d57be77b43b6ce537cf620"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dragonfs_8c.html#a5b32978567d57be77b43b6ce537cf620">dfs_open</a> (const char *const path)</td></tr>
-<tr class="memdesc:a5b32978567d57be77b43b6ce537cf620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a file given a path.  <br /></td></tr>
-<tr class="separator:a5b32978567d57be77b43b6ce537cf620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad96031c67ff31c71405babdb7925260" id="r_aad96031c67ff31c71405babdb7925260"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dragonfs_8c.html#aad96031c67ff31c71405babdb7925260">dfs_open</a> (const char *path)</td></tr>
+<tr class="memdesc:aad96031c67ff31c71405babdb7925260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a file given a path.  <br /></td></tr>
+<tr class="separator:aad96031c67ff31c71405babdb7925260"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac645811e9856f35930238d945dc48e9f" id="r_ac645811e9856f35930238d945dc48e9f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dragonfs_8c.html#ac645811e9856f35930238d945dc48e9f">dfs_close</a> (uint32_t handle)</td></tr>
 <tr class="memdesc:ac645811e9856f35930238d945dc48e9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close an already open file handle.  <br /></td></tr>
 <tr class="separator:ac645811e9856f35930238d945dc48e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -289,7 +289,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
 </div><div class="memdoc">
 
 <p>Find the next file or directory in a directory listing. </p>
-<dl class="section note"><dt>Note</dt><dd>Should be called after doing a <a class="el" href="dragonfs_8h.html#a33dacb81cbf0f03a8588ffa8d9ee86ac" title="Find the first file or directory in a directory listing.">dfs_dir_findfirst</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Should be called after doing a <a class="el" href="dragonfs_8c.html#a33dacb81cbf0f03a8588ffa8d9ee86ac" title="Find the first file or directory in a directory listing.">dfs_dir_findfirst</a>.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer to place the name of the next file or directory found</td></tr>
@@ -300,8 +300,8 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
 
 </div>
 </div>
-<a id="a5b32978567d57be77b43b6ce537cf620" name="a5b32978567d57be77b43b6ce537cf620"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b32978567d57be77b43b6ce537cf620">&#9670;&#160;</a></span>dfs_open()</h2>
+<a id="aad96031c67ff31c71405babdb7925260" name="aad96031c67ff31c71405babdb7925260"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad96031c67ff31c71405babdb7925260">&#9670;&#160;</a></span>dfs_open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -309,7 +309,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
         <tr>
           <td class="memname">int dfs_open </td>
           <td>(</td>
-          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
         </tr>
@@ -347,7 +347,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
 <p>Close an already open file handle. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#a5b32978567d57be77b43b6ce537cf620" title="Open a file given a path.">dfs_open</a>.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#aad96031c67ff31c71405babdb7925260" title="Open a file given a path.">dfs_open</a>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -390,7 +390,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
 <p>Seek to an offset in the file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#a5b32978567d57be77b43b6ce537cf620" title="Open a file given a path.">dfs_open</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#aad96031c67ff31c71405babdb7925260" title="Open a file given a path.">dfs_open</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>A byte offset from the origin to seek from. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">origin</td><td>An offset to seek from. Either <code>SEEK_SET</code>, <code>SEEK_CUR</code> or <code>SEEK_END</code>.</td></tr>
   </table>
@@ -419,7 +419,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
 <p>Return the current offset into a file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#a5b32978567d57be77b43b6ce537cf620" title="Open a file given a path.">dfs_open</a>.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#aad96031c67ff31c71405babdb7925260" title="Open a file given a path.">dfs_open</a>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -472,7 +472,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
     <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer to read into </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of each element to read </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Number of elements to read </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#a5b32978567d57be77b43b6ce537cf620" title="Open a file given a path.">dfs_open</a>.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#aad96031c67ff31c71405babdb7925260" title="Open a file given a path.">dfs_open</a>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -499,7 +499,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
 <p>Return the file size of an open file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#a5b32978567d57be77b43b6ce537cf620" title="Open a file given a path.">dfs_open</a>.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#aad96031c67ff31c71405babdb7925260" title="Open a file given a path.">dfs_open</a>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -555,7 +555,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
 <p>Return whether the end of file has been reached. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#a5b32978567d57be77b43b6ce537cf620" title="Open a file given a path.">dfs_open</a>.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handle</td><td>A valid file handle as returned from <a class="el" href="dragonfs_8c.html#aad96031c67ff31c71405babdb7925260" title="Open a file given a path.">dfs_open</a>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -596,7 +596,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>dfs_strerror<
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 10 2025 13:06:33 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Jan 11 2025 10:39:56 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

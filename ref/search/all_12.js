@@ -26,10 +26,11 @@ var searchData=
   ['num_5fbuffers_23',['num_buffers',['../audio_8c.html#aac028f4c15ac7f78a44be5db76cfbec7',1,'NUM_BUFFERS:&#160;audio.c'],['../display_8c.html#aac028f4c15ac7f78a44be5db76cfbec7',1,'NUM_BUFFERS:&#160;display.c']]],
   ['num_5fbytes_24',['num_bytes',['../eepromfs_8c.html#a3c35591920acb3d38e247335ac4a75a4',1,'eepfs_file_t']]],
   ['num_5fentries_25',['num_entries',['../rompak_8c.html#af99381d7230b77b7f7be4568572590c9',1,'header_t']]],
-  ['num_5fimport_5fsyms_26',['num_import_syms',['../structdso__module__t.html#a43ea46f31817e2e9ca29358826adc941',1,'dso_module_t']]],
-  ['num_5frelocs_27',['num_relocs',['../structdso__module__t.html#a2c2e301edd5a5ce83de6fc537d7dfae5',1,'dso_module_t']]],
-  ['num_5fsyms_28',['num_syms',['../structdso__module__t.html#a226c26464b8632cf098940ef0ba80cff',1,'dso_module_t::num_syms'],['../structmainexe__sym__info__t.html#afcc46c9909f9b8eb84f9e11c7471b54c',1,'mainexe_sym_info_t::num_syms']]],
-  ['nwaves_29',['nwaves',['../xm64_8h.html#ad603cd4f10c0b5d28c2785c7405dfb7f',1,'xm64player_t']]],
-  ['nx_30',['nx',['../rdpq__tex_8h.html#a6fb224885eb9c66d640955f03bfff828',1,'rdpq_blitparms_t']]],
-  ['ny_31',['ny',['../rdpq__tex_8h.html#a9f482dafa2522e44b4afaaae4ca9549d',1,'rdpq_blitparms_t']]]
+  ['num_5ffiles_26',['num_files',['../group__dfs.html#a2935e2193bb8f7a7bf0172ecf9e3a2a5',1,'dfs_lookup_t']]],
+  ['num_5fimport_5fsyms_27',['num_import_syms',['../structdso__module__t.html#a43ea46f31817e2e9ca29358826adc941',1,'dso_module_t']]],
+  ['num_5frelocs_28',['num_relocs',['../structdso__module__t.html#a2c2e301edd5a5ce83de6fc537d7dfae5',1,'dso_module_t']]],
+  ['num_5fsyms_29',['num_syms',['../structdso__module__t.html#a226c26464b8632cf098940ef0ba80cff',1,'dso_module_t::num_syms'],['../structmainexe__sym__info__t.html#afcc46c9909f9b8eb84f9e11c7471b54c',1,'mainexe_sym_info_t::num_syms']]],
+  ['nwaves_30',['nwaves',['../xm64_8h.html#ad603cd4f10c0b5d28c2785c7405dfb7f',1,'xm64player_t']]],
+  ['nx_31',['nx',['../rdpq__tex_8h.html#a6fb224885eb9c66d640955f03bfff828',1,'rdpq_blitparms_t']]],
+  ['ny_32',['ny',['../rdpq__tex_8h.html#a9f482dafa2522e44b4afaaae4ca9549d',1,'rdpq_blitparms_t']]]
 ];

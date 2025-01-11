@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r_0',['r',['../group__controller.html#ae1e1d3d40573127e9ee0480caf1283d6',1,'_SI_condat.__unnamed20__.__unnamed24__::R'],['../group__graphics.html#a9138f903c9036862cfeab970b156b62d',1,'color_t::r']]],
+  ['r_0',['r',['../group__graphics.html#a9138f903c9036862cfeab970b156b62d',1,'color_t::r'],['../group__controller.html#ae1e1d3d40573127e9ee0480caf1283d6',1,'_SI_condat.__unnamed20__.__unnamed24__::R']]],
   ['ra_5foffset_1',['ra_offset',['../structbt__func__t.html#a84458a7752c5604f07159aef57b67f71',1,'bt_func_t']]],
   ['ram_5faddress_2',['ram_address',['../group__lowlevel.html#a9c462b86aed69b69730e770a6ad69107',1,'PI_regs_t']]],
   ['ram_5fsize_5fcode_3',['ram_size_code',['../tpak_8h.html#a0969c89ebf119da8111dd43c00cf76cb',1,'gameboy_cartridge_header']]],

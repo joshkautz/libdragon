@@ -101,6 +101,12 @@ Data Structures</h2></td></tr>
 <tr class="memitem:structdfs__open__file__t" id="r_structdfs__open__file__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dfs.html#structdfs__open__file__t">dfs_open_file_t</a></td></tr>
 <tr class="memdesc:structdfs__open__file__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open file handle structure.  <a href="group__dfs.html#structdfs__open__file__t">More...</a><br /></td></tr>
 <tr class="separator:structdfs__open__file__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structdfs__lookup__file__t" id="r_structdfs__lookup__file__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dfs.html#structdfs__lookup__file__t">dfs_lookup_file_t</a></td></tr>
+<tr class="memdesc:structdfs__lookup__file__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data for a single file in <a class="el" href="group__dfs.html#structdfs__lookup__t" title="Data for DFS file lookup used to speed up file open performance.">dfs_lookup_t</a>.  <a href="group__dfs.html#structdfs__lookup__file__t">More...</a><br /></td></tr>
+<tr class="separator:structdfs__lookup__file__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structdfs__lookup__t" id="r_structdfs__lookup__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dfs.html#structdfs__lookup__t">dfs_lookup_t</a></td></tr>
+<tr class="memdesc:structdfs__lookup__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data for DFS file lookup used to speed up file open performance.  <a href="group__dfs.html#structdfs__lookup__t">More...</a><br /></td></tr>
+<tr class="separator:structdfs__lookup__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -124,6 +130,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SECTOR_PAYLOAD</b>&#160;&#160;&#160;252</td></tr>
 <tr class="memdesc:gaa5b4142139985c33ebf12f4dacf6f61f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of a sector payload. <br /></td></tr>
 <tr class="separator:gaa5b4142139985c33ebf12f4dacf6f61f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7f3def9a44c7c9d570782cd867ff56a4" id="r_ga7f3def9a44c7c9d570782cd867ff56a4"><td class="memItemLeft" align="right" valign="top"><a id="ga7f3def9a44c7c9d570782cd867ff56a4" name="ga7f3def9a44c7c9d570782cd867ff56a4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DFS_LOOKUP_PRIME</b>&#160;&#160;&#160;31</td></tr>
+<tr class="memdesc:ga7f3def9a44c7c9d570782cd867ff56a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prime number used for hash lookups. <br /></td></tr>
+<tr class="separator:ga7f3def9a44c7c9d570782cd867ff56a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1d81e04e879a844f4d733a3982bf85ee" id="r_ga1d81e04e879a844f4d733a3982bf85ee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dfs.html#ga1d81e04e879a844f4d733a3982bf85ee">DFS_DEFAULT_LOCATION</a>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:ga1d81e04e879a844f4d733a3982bf85ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default filesystem location.  <br /></td></tr>
 <tr class="separator:ga1d81e04e879a844f4d733a3982bf85ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -266,6 +276,84 @@ The offset within the filesystem where the file is stored. </td></tr>
 
 </div>
 </div>
+<a name="structdfs__lookup__file__t" id="structdfs__lookup__file__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structdfs__lookup__file__t">&#9670;&#160;</a></span>dfs_lookup_file_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct dfs_lookup_file_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p>Data for a single file in <a class="el" href="group__dfs.html#structdfs__lookup__t" title="Data for DFS file lookup used to speed up file open performance.">dfs_lookup_t</a>. </p>
+</div><table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="a4f6a5193b71f598c87e6b7378799dd27" name="a4f6a5193b71f598c87e6b7378799dd27"></a>uint32_t</td>
+<td class="fieldname">
+path_hash</td>
+<td class="fielddoc">
+Hash of the path string. </td></tr>
+<tr><td class="fieldtype">
+<a id="ae55db6e17c319c1ca4374744c1db918f" name="ae55db6e17c319c1ca4374744c1db918f"></a>uint32_t</td>
+<td class="fieldname">
+path_ofs</td>
+<td class="fielddoc">
+Top 12 bits: length of the path string; lowest 20 bits: offset of the path string. </td></tr>
+<tr><td class="fieldtype">
+<a id="a9c5812436ceb430af50e25a3d091b9fc" name="a9c5812436ceb430af50e25a3d091b9fc"></a>uint32_t</td>
+<td class="fieldname">
+data_ofs</td>
+<td class="fielddoc">
+Data offset for file. </td></tr>
+<tr><td class="fieldtype">
+<a id="ae71cd0ab626a7ae711fe649d0144fc00" name="ae71cd0ab626a7ae711fe649d0144fc00"></a>uint32_t</td>
+<td class="fieldname">
+data_len</td>
+<td class="fielddoc">
+Data length for file. </td></tr>
+</table>
+
+</div>
+</div>
+<a name="structdfs__lookup__t" id="structdfs__lookup__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structdfs__lookup__t">&#9670;&#160;</a></span>dfs_lookup_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct dfs_lookup_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p>Data for DFS file lookup used to speed up file open performance. </p>
+</div><table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="a2935e2193bb8f7a7bf0172ecf9e3a2a5" name="a2935e2193bb8f7a7bf0172ecf9e3a2a5"></a>uint32_t</td>
+<td class="fieldname">
+num_files</td>
+<td class="fielddoc">
+Number of files. </td></tr>
+<tr><td class="fieldtype">
+<a id="ac8f3480714f5ed570eaa43624d7d4b30" name="ac8f3480714f5ed570eaa43624d7d4b30"></a>uint32_t</td>
+<td class="fieldname">
+path_ofs</td>
+<td class="fielddoc">
+Base offset for path data. </td></tr>
+<tr><td class="fieldtype">
+<a id="a04ce72c393cad1417ba740555ea50261" name="a04ce72c393cad1417ba740555ea50261"></a><a class="el" href="group__dfs.html#structdfs__lookup__file__t">dfs_lookup_file_t</a></td>
+<td class="fieldname">
+files[]</td>
+<td class="fielddoc">
+Array of file entries. </td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga1d81e04e879a844f4d733a3982bf85ee" name="ga1d81e04e879a844f4d733a3982bf85ee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga1d81e04e879a844f4d733a3982bf85ee">&#9670;&#160;</a></span>DFS_DEFAULT_LOCATION</h2>
@@ -331,7 +419,7 @@ The offset within the filesystem where the file is stored. </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 10 2025 13:06:34 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Jan 11 2025 10:39:57 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
