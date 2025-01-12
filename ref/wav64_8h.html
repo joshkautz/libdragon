@@ -76,6 +76,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">wav64.h File Reference<div class="ingroups"><a class="el" href="group__libdragon.html">libdragon</a> &raquo; <a class="el" href="group__audio.html">Audio Subsystem</a> &raquo; <a class="el" href="group__mixer.html">Audio mixer</a></div></div></div>
 </div><!--header-->
@@ -91,6 +92,12 @@ Data Structures</h2></td></tr>
 <tr class="memitem:structwav64__t" id="r_structwav64__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8h.html#structwav64__t">wav64_t</a></td></tr>
 <tr class="memdesc:structwav64__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">WAV64 structure.  <a href="wav64_8h.html#structwav64__t">More...</a><br /></td></tr>
 <tr class="separator:structwav64__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a41067fd01f39b23852945f418e0f3d90" id="r_a41067fd01f39b23852945f418e0f3d90"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wav64_8h.html#a41067fd01f39b23852945f418e0f3d90">wav64_init_compression</a>(level)</td></tr>
+<tr class="memdesc:a41067fd01f39b23852945f418e0f3d90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable a non-default compression level.  <br /></td></tr>
+<tr class="separator:a41067fd01f39b23852945f418e0f3d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -163,6 +170,41 @@ ext</td>
 <td class="fielddoc">
 Pointer to extended data (internal use) </td></tr>
 </table>
+
+</div>
+</div>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a41067fd01f39b23852945f418e0f3d90" name="a41067fd01f39b23852945f418e0f3d90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41067fd01f39b23852945f418e0f3d90">&#9670;&#160;</a></span>wav64_init_compression</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define wav64_init_compression</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable a non-default compression level. </p>
+<p>This function must be called if any wav64 that will be loaded use a non-default compression level. The default compression level is 1 (VADPCM) for which no initialization is required. Level 0 (uncompressed) also requires no initialization.</p>
+<p>Currently, only level 3 requires initialization (level 2 does not exist yet). If you have any wav64 compressed with level 3, you must call this function before opening them.</p>
+<div class="fragment"><div class="line"><a class="code hl_define" href="wav64_8h.html#a41067fd01f39b23852945f418e0f3d90">wav64_init_compression</a>(3); </div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_function" href="wav64_8c.html#a62b743c8c56bd67b3f2231f770c99e78">wav64_open</a>(&amp;jingle, <span class="stringliteral">&quot;rom:/jingle.wav64&quot;</span>);</div>
+<div class="ttc" id="awav64_8c_html_a62b743c8c56bd67b3f2231f770c99e78"><div class="ttname"><a href="wav64_8c.html#a62b743c8c56bd67b3f2231f770c99e78">wav64_open</a></div><div class="ttdeci">void wav64_open(wav64_t *wav, const char *file_name)</div><div class="ttdoc">Open a WAV64 file for playback.</div><div class="ttdef"><b>Definition</b> wav64.c:102</div></div>
+<div class="ttc" id="awav64_8h_html_a41067fd01f39b23852945f418e0f3d90"><div class="ttname"><a href="wav64_8h.html#a41067fd01f39b23852945f418e0f3d90">wav64_init_compression</a></div><div class="ttdeci">#define wav64_init_compression(level)</div><div class="ttdoc">Enable a non-default compression level.</div><div class="ttdef"><b>Definition</b> wav64.h:69</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>Compression level to initialize</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="wav64_8h.html#ad66af3ff9f0c1d51211cc72c1b92a6e9" title="Open a WAV64 file for playback.">wav64_open</a> </dd></dl>
 
 </div>
 </div>
@@ -301,7 +343,7 @@ Pointer to extended data (internal use) </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 11 2025 23:26:25 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sun Jan 12 2025 08:42:38 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
