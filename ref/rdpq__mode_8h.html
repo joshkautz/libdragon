@@ -317,7 +317,7 @@ Mode setting stack</h2>
 </div><div class="memdoc">
 
 <p>Blending mode: additive alpha. You can pass this macro to <a class="el" href="rdpq__mode_8h.html#a64a153623e5985ce5c434bf52ba6efa6" title="Configure the formula to use for blending.">rdpq_mode_blender</a>. </p>
-<p>NOTE: additive blending is broken on RDP because it can overflow. Basically, if the result of the sum is larger than 1.5 (in scale 0..1), instead of being clamped to 1, it overflows back to 0, which makes the mode almost useless. It is defined it for completeness. </p>
+<p>NOTE: additive blending is broken on RDP because it can overflow. Basically, as soon as the result of the sum is slightly larger than 1.0 (in scale 0..1), instead of being clamped to 1, it overflows back to 0, which makes the mode almost useless. It is defined it for completeness. </p>
 
 </div>
 </div>
@@ -1298,7 +1298,7 @@ Mode setting stack</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jan 12 2025 08:42:38 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Jan 14 2025 16:06:16 for libdragon by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
