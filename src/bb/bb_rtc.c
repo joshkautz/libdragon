@@ -66,18 +66,18 @@ bool bbrtc_get_state(bb_rtc_state_t *state)
         return false;
 
     memset(state, 0, sizeof(bb_rtc_state_t));
-    state->secs = bcd_decode(data[0] & 0x7F);
-    state->mins = bcd_decode(data[1] & 0x7F);
+    state->secs  = bcd_decode(data[0] & 0x7F);
+    state->mins  = bcd_decode(data[1] & 0x7F);
     state->hours = bcd_decode(data[2] & 0x3F);
-    state->dow = bcd_decode(data[3] & 0x07);
-    state->day = bcd_decode(data[4] & 0x3F);
+    state->dow   = bcd_decode(data[3] & 0x07);
+    state->day   = bcd_decode(data[4] & 0x3F);
     state->month = bcd_decode(data[5] & 0x1F);
-    state->year = bcd_decode(data[6]);
+    state->year  = bcd_decode(data[6] & 0xFF);
 
-    state->stop =           (data[0] & 0x80) ? true : false;
+    state->stop           = (data[0] & 0x80) ? true : false;
     state->oscilator_fail = (data[1] & 0x80) ? true : false;
-    state->century =        (data[2] & 0x40) ? true : false;
+    state->century        = (data[2] & 0x40) ? true : false;
     state->century_enable = (data[2] & 0x80) ? true : false;
-    state->output_level =   (data[7] & 0x80) ? true : false;
+    state->output_level   = (data[7] & 0x80) ? true : false;
     return true;
 }
