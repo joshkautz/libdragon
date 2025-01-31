@@ -47,7 +47,7 @@ typedef struct {
     uint8_t year;           ///< Year [0-99]
 
     bool stop;              ///< RTC is stopped
-    bool oscilator_fail;    ///< Oscillator has failed
+    bool oscillator_fail;   ///< Oscillator has failed
     bool century;           ///< Century bit
     bool century_enable;    ///< Century enable: automatic toggle of century bit
     bool output_level;      ///< Level of the OUT pin
@@ -74,10 +74,10 @@ bool bbrtc_get_state(bb_rtc_state_t *state)
     state->month = bcd_decode(data[5] & 0x1F);
     state->year  = bcd_decode(data[6] & 0xFF);
 
-    state->stop           = (data[0] & 0x80) ? true : false;
-    state->oscilator_fail = (data[1] & 0x80) ? true : false;
-    state->century        = (data[2] & 0x40) ? true : false;
-    state->century_enable = (data[2] & 0x80) ? true : false;
-    state->output_level   = (data[7] & 0x80) ? true : false;
+    state->stop            = (data[0] & 0x80) ? true : false;
+    state->oscillator_fail = (data[1] & 0x80) ? true : false;
+    state->century         = (data[2] & 0x40) ? true : false;
+    state->century_enable  = (data[2] & 0x80) ? true : false;
+    state->output_level    = (data[7] & 0x80) ? true : false;
     return true;
 }
