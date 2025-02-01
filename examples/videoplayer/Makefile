@@ -3,7 +3,7 @@ include $(N64_INST)/include/n64.mk
 
 MOVIE_FILE=caminandes.ogv
 MOVIE_URL=https://archive.org/download/CaminandesLlamigos/Caminandes_%20Llamigos-1080p.ogv
-DFS_FILES=filesystem/movie.m1v filesystem/movie.wav64
+DFS_FILES=filesystem/movie.m1v filesystem/movie.wav64 filesystem/font.font64
 
 src = videoplayer.c
 
@@ -19,6 +19,11 @@ $(BUILD_DIR)/videoplayer.dfs: $(DFS_FILES)
 	@echo "    [DFS] $@"
 	if [ ! -s "$<" ]; then rm -f "$<" ; fi
 	$(N64_MKDFS) "$@" filesystem >/dev/null
+
+filesystem/font.font64: font.ttf
+	@mkdir -p $(dir $@)
+	@echo "    [TTF to FONT64] $@"
+	$(N64_MKFONT) $(MKFONT_FLAGS) --range all --size 38 --output filesystem "$<"
 
 # Re-encode the movie's video stream if ffmpeg is available
 filesystem/movie.m1v: $(MOVIE_FILE)

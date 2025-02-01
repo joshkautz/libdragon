@@ -27,6 +27,11 @@ int main(void)
 	audio_init(AUDIO_HZ, 4);
 	mixer_init(8);
 
+	rdpq_fontstyle_t fontstyle_white = {.color = RGBA32(255, 255, 255, 255)};
+	rdpq_font_t *font = rdpq_font_load("rom:/font.font64");
+	rdpq_font_style(font, 0, &fontstyle_white);
+	rdpq_text_register_font(1, font);
+
 	// Check if the movie is present in the filesystem, so that we can provide
 	// a specific error message.
 	FILE *f = fopen("rom:/movie.m1v", "rb");
@@ -34,7 +39,7 @@ int main(void)
 	fclose(f);
 
 	// Open the movie using the mpeg2 module and create a YUV blitter to draw it.
-	mpeg2_t* video_track = mpeg2_open("rom:/movie.m1v");
+	mpeg2_t *video_track = mpeg2_open("rom:/movie.m1v");
 
 	int video_width = mpeg2_get_width(video_track);
 	int video_height = mpeg2_get_height(video_track);
@@ -51,23 +56,22 @@ int main(void)
 	// is wasted in framebuffers to hold black pixels, so we go with it.
 
 	display_init((resolution_t){
-			// Initialize a framebuffer resolution which precisely matches the video
-			.width = video_width, .height = video_height,
-			.interlaced = INTERLACE_OFF,
-			// Set the desired aspect ratio to that of the video. By default,
-			// display_init would force 4:3 instead, which would be wrong here.
-			// eg: if a video is 320x176, we want to display it as 16:9-ish.
-			.aspect_ratio = (float)video_width / video_height,
-			// Uncomment this line if you want to have some additional black
-			// borders to fully display the video on real CRTs.
-			// .overscan_margin = VI_CRT_MARGIN,
-		},
-		// 32-bit display mode is mandatory for video playback.
-		DEPTH_32_BPP,
-		NUM_DISPLAY, GAMMA_NONE,
-		// Activate bilinear filtering while rescaling the video
-		FILTERS_RESAMPLE
-	);
+					 // Initialize a framebuffer resolution which precisely matches the video
+					 .width = video_width,
+					 .height = video_height,
+					 .interlaced = INTERLACE_OFF,
+					 // Set the desired aspect ratio to that of the video. By default,
+					 // display_init would force 4:3 instead, which would be wrong here.
+					 // eg: if a video is 320x176, we want to display it as 16:9-ish.
+					 .aspect_ratio = (float)video_width / video_height,
+					 // Uncomment this line if you want to have some additional black
+					 // borders to fully display the video on real CRTs.
+					 // .overscan_margin = VI_CRT_MARGIN,
+				 },
+				 // 32-bit display mode is mandatory for video playback.
+				 DEPTH_32_BPP, NUM_DISPLAY, GAMMA_NONE,
+				 // Activate bilinear filtering while rescaling the video
+				 FILTERS_RESAMPLE);
 
 	yuv_blitter_t yuv = yuv_blitter_new_fmv(
 		// Resolution of the video we expect to play.
@@ -81,8 +85,7 @@ int main(void)
 		display_get_width(), display_get_height(),
 		// You can further customize YUV options through this parameter structure
 		// if necessary.
-		&(yuv_fmv_parms_t) {}
-	);
+		&(yuv_fmv_parms_t){});
 
 	// Engage the fps limiter to ensure proper video pacing.
 	float fps = mpeg2_get_framerate(video_track);
@@ -115,6 +118,8 @@ int main(void)
 		yuv_frame_t frame = mpeg2_get_frame(video_track);
 		yuv_blitter_run(&yuv, &frame);
 		PROFILE_STOP(PS_YUV, 0);
+
+		rdpq_text_print(NULL, 1, 100, 100, "$01^00Test");
 
 		rdpq_detach_show();
 
