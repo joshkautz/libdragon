@@ -23,7 +23,7 @@ $(BUILD_DIR)/videoplayer.dfs: $(DFS_FILES)
 filesystem/font.font64: font.ttf
 	@mkdir -p $(dir $@)
 	@echo "    [TTF to FONT64] $@"
-	$(N64_MKFONT) $(MKFONT_FLAGS) -v -v --range all --size 40 --output filesystem "$<"
+	$(N64_MKFONT) $(MKFONT_FLAGS) -v -v --range all --size 60 --output filesystem "$<"
 
 # Re-encode the movie's video stream if ffmpeg is available
 filesystem/movie.m1v: $(MOVIE_FILE)
