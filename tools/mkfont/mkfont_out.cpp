@@ -597,6 +597,28 @@ int Font::get_glyph_index(uint32_t cp)
     return -1;
 }
 
+static bool image_fits_tmem(Image& img, tex_format_t fmt)
+{
+    switch (fmt) {
+    case FMT_I4:
+    case FMT_IA4:
+        return (ROUND_UP((img.w+1)/2, 8) * img.h) <= 4096;
+    case FMT_CI4:
+        return (ROUND_UP((img.w+1)/2, 8) * img.h) <= 2048;
+    case FMT_I8:
+    case FMT_IA8:
+        return (ROUND_UP(img.w, 8) * img.h) <= 4096;
+    case FMT_CI8:
+        return (ROUND_UP(img.w, 8) * img.h) <= 2048;
+    case FMT_RGBA16:
+        return (ROUND_UP(img.w*2, 8) * img.h) <= 4096;
+    case FMT_RGBA32:
+        return (ROUND_UP(img.w*2, 8) * img.h) <= 2048;
+    default:
+        assert(!"unimplmented format");
+    }
+}
+
 int Font::add_glyph(uint32_t cp, Image&& img, int xoff, int yoff, int xadv)
 {
     int gidx = get_glyph_index(cp);
@@ -605,6 +627,7 @@ int Font::add_glyph(uint32_t cp, Image&& img, int xoff, int yoff, int xadv)
         return -1;
     }
 
+    tex_format_t tmem_fmt;
     switch (fonttype) {
     case FONT_TYPE_MONO:
         if (img.fmt != FMT_I8) assert(!"glyph image must be I8 for monochrome fonts");
@@ -613,9 +636,11 @@ int Font::add_glyph(uint32_t cp, Image&& img, int xoff, int yoff, int xadv)
             if (px.data[0] > 0 && px.data[0] < 0xF0)
                 assert(!"monochrome glyph must not contains shades of gray");
         });
+        tmem_fmt = FMT_CI4;
         break;
     case FONT_TYPE_ALIASED:
         if (img.fmt != FMT_I8) assert(!"glyph image must be I8 for aliased fonts");
+        tmem_fmt = FMT_I4;
         break;
     case FONT_TYPE_MONO_OUTLINE:
         // Outline fonts are IA16. Intensity goes between 0x00 for the outline
@@ -627,15 +652,18 @@ int Font::add_glyph(uint32_t cp, Image&& img, int xoff, int yoff, int xadv)
             if (px.data[0] != 0 && px.data[1] != 0x00 && px.data[1] != 0xFF)
                 assert(!"monochrome glyph must not contains shades of gray");
         });
+        tmem_fmt = FMT_CI4;
         break;
     case FONT_TYPE_ALIASED_OUTLINE:
         // Outline fonts are IA16. Intensity goes between 0x00 for the outline
         // to 0xFF for the fill, while the alpha channel is the coverage of each pixel.
         if (img.fmt != FMT_IA16) assert(!"glyph image must be IA16 for outlined fonts");
+        tmem_fmt = FMT_IA8;
         break;
     case FONT_TYPE_BITMAP:
         if (img.fmt != FMT_RGBA16 && img.fmt != FMT_RGBA32 && img.fmt != FMT_CI8)
             assert(!"glyph image must be RGBA16/RGBA32/CI8 for bitmap fonts");
+        tmem_fmt = img.fmt;
         break;
     default:
         assert(!"unsupported font type");
@@ -644,6 +672,12 @@ int Font::add_glyph(uint32_t cp, Image&& img, int xoff, int yoff, int xadv)
     // Crop the image to the actual glyph size
     int x0=0, y0=0;
     img = img.crop_transparent(&x0, &y0);
+
+    if (!image_fits_tmem(img, tmem_fmt)) {
+        fprintf(stderr, "Error: glyph %s [U+%04X] does not fit in TMEM (%dx%d in I4 format)\n",
+            codepoint_to_utf8(cp).c_str(), cp, img.w, img.h);
+        exit(1);
+    }
 
     glyphs.push_back(Glyph(gidx, cp, std::move(img), xoff + x0, yoff + y0, xadv));
     return gidx;
@@ -674,6 +708,7 @@ std::vector<rect_pack::Sheet> Font::pack_atlases(std::vector<Glyph>& glyphs, int
         total_glyph_area += size.width * size.height;
         sizes.push_back(size);
     }
+    assert(sizes.size() > 0);
 
     tex_format_t cfmt; 
     switch (fonttype) {
@@ -740,10 +775,15 @@ std::vector<rect_pack::Sheet> Font::pack_atlases(std::vector<Glyph>& glyphs, int
     if (total_glyph_area <= merge_layers * MAX_TMEM_ATLASES * settings.max_width * settings.max_height) {
 
         // Do the packing with TMEM limits
+        assert(sizes.size() > 0);
         sheets = rect_pack::pack(settings, sizes);
         
         // Check whether the number of atlases is below the threshold to keep them in TMEM
-        fit_tmem = sheets.size() <= MAX_TMEM_ATLASES * merge_layers;
+        // Also check that it's bigger than 0, otherwise it means that none of the input
+        // glyph fit the atlas size; they're probably too big (even though they would still
+        // fit a specially-sized atlas that just covers them, otherwise we would have
+        // asserted already in Font::add_glyph). Try the RDRAM approach too in this case.
+        fit_tmem = sheets.size() > 0 && sheets.size() <= MAX_TMEM_ATLASES * merge_layers;
     }
 
     if (!fit_tmem) {    
@@ -761,6 +801,7 @@ std::vector<rect_pack::Sheet> Font::pack_atlases(std::vector<Glyph>& glyphs, int
         // put 4 here to avoid a too slow optimization process for a modest saving.
         settings.align_width = 4;
         sheets = rect_pack::pack(settings, sizes);
+        assert(sheets.size() > 0);
     }
 
     if (flag_verbose >= 2)
@@ -770,6 +811,7 @@ std::vector<rect_pack::Sheet> Font::pack_atlases(std::vector<Glyph>& glyphs, int
     // sizes. This is not something at which rect_pack excels at, so a bruteforce
     // approach is used here.
     int num_sheets = sheets.size();
+    assert(num_sheets > 0);
     int last_group = (num_sheets-1) / merge_layers * merge_layers;
 
     // Move the last group of sheets to a temporary array. Calculate also the
